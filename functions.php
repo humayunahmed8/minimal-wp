@@ -1,4 +1,6 @@
-<?php
+<?php 
+// Kirki Customizer
+require_once(get_theme_file_path('/inc/minimal-customizer.php'));
 
 // Load Theme Script 
 function stack_scripts() {
