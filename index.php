@@ -7,7 +7,7 @@
               <div class="contents text-center">
                 <h2 class="head-title wow fadeInUp"><?php echo get_theme_mod('banner_heading'); ?></h2>
                 <div class="header-button wow fadeInUp" data-wow-delay="0.3s">
-                  <a href="<?php echo get_theme_mod('banner_button_url'); ?>" class="btn btn-common"><?php echo get_theme_mod('banner_button_text'); ?></a>
+                  <a href="<?php echo get_theme_mod('banner_button_url'); ?>" class="btn btn-common"><?php echo get_theme_mod('banner_button_label'); ?></a>
                 </div>
               </div>
               <div class="img-thumb text-center wow fadeInUp" data-wow-delay="0.6s">
@@ -26,47 +26,33 @@
           <div class="col-lg-6 col-md-12 col-sm-12">
             <div class="text-wrapper">
               <div>
-                <h2 class="title-hl wow fadeInLeft" data-wow-delay="0.3s">We are helping to grow <br> your business.</h2>
-                <p class="mb-4">A digital studio specialising in User Experience & eCommerce, we combine innovation with digital craftsmanship to help brands fulfill their potential.</p>
-                <a href="#" class="btn btn-common">More About Us</a>
+                <h2 class="title-hl wow fadeInLeft" data-wow-delay="0.3s"><?php echo get_theme_mod('feature_content_heading'); ?></h2>
+                <p class="mb-4"><?php echo get_theme_mod('feature_content_heading_desc'); ?></p>
+                <a href="<?php echo get_theme_mod('feature_content_btn_url'); ?>" class="btn btn-common"><?php echo get_theme_mod('feature_content_btn_label'); ?></a>
               </div>
             </div>
           </div>
           <div class="col-lg-6 col-md-12 col-sm-12 padding-none feature-bg">
             <div class="feature-thumb">
+              <?php $settings = get_theme_mod( 'feature_repeater'); 
+              foreach( $settings as $setting ) : ?>
               <div class="feature-item wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
                 <div class="icon">
-                  <i class="lni-microphone"></i>
-                </div>
+                  <i class="<?php echo $setting['feature_icon']; ?>"></i>
+                </div> 
                 <div class="feature-content">
-                  <h3>What we do</h3>
-                  <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia con- sequuntur magni dolores </p>
+                  <h3><?php echo $setting['feature_title']; ?></h3>
+                  <p><?php echo $setting['feature_desc']; ?></p>
                 </div>
               </div>
-              <div class="feature-item wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
-                <div class="icon">
-                  <i class="lni-users"></i>
-                </div>
-                <div class="feature-content">
-                  <h3>Meet our team</h3>
-                  <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia con- sequuntur magni dolores </p>
-                </div>
-              </div>
-              <div class="feature-item wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="700ms">
-                <div class="icon">
-                  <i class="lni-medall-alt"></i>
-                </div>
-                <div class="feature-content">
-                  <h3>Our Creation</h3>
-                  <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia con- sequuntur magni dolores </p>
-                </div>
-              </div>
+              <?php endforeach; ?>
             </div>
           </div>
         </div>
       </div>
     </div>
     <!-- Feature Section End -->
+  
 
     <!-- Services Section Start -->
     <section id="services" class="section-padding bg-gray">

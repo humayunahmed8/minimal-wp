@@ -3,6 +3,10 @@ html {
   overflow-x: hidden;
 }
 
+:root {
+  --primary-color: #3d60f4;
+}
+
 body {
   background: #fff;
   font-size: 14px;
@@ -318,7 +322,7 @@ hr {
 }
 
 .feature-bg {
-  background: #3d60f4;
+  background: var(--primary-color);
 }
 
 .text-wrapper {
