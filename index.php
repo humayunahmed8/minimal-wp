@@ -34,15 +34,15 @@
           </div>
           <div class="col-lg-6 col-md-12 col-sm-12 padding-none feature-bg">
             <div class="feature-thumb">
-              <?php $settings = get_theme_mod( 'feature_repeater'); 
-              foreach( $settings as $setting ) : ?>
+              <?php $features = get_theme_mod( 'feature_repeater'); 
+              foreach( $features as $feature ) : ?>
               <div class="feature-item wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
                 <div class="icon">
-                  <i class="<?php echo $setting['feature_icon']; ?>"></i>
+                  <i class="<?php echo $feature['feature_icon']; ?>"></i>
                 </div> 
                 <div class="feature-content">
-                  <h3><?php echo $setting['feature_title']; ?></h3>
-                  <p><?php echo $setting['feature_desc']; ?></p>
+                  <h3><?php echo $feature['feature_title']; ?></h3>
+                  <p><?php echo $feature['feature_desc']; ?></p>
                 </div>
               </div>
               <?php endforeach; ?>
@@ -55,89 +55,35 @@
   
 
     <!-- Services Section Start -->
+    <?php if(get_theme_mod('service_section_show_hide', true) == true) : ?>
     <section id="services" class="section-padding bg-gray">
       <div class="container">
         <div class="section-header text-center">
-          <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Our Services</h2>
-          <p>A desire to help and empower others between community contributors in technology <br> began to grow in 2020.</p>
+          <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s"><?php echo get_theme_mod('service_section_title', 'Our Services'); ?></h2>
+          <p><?php echo get_theme_mod('service_section_desc', 'A desire to help and empower others between community contributors in technology <br> began to grow in 2020.') ?></p>
         </div>
         <div class="row">
+          <?php $services = get_theme_mod('service_item_repeater'); ?>
+          <?php foreach($services as $service) : ?>
           <!-- Services item -->
-          <div class="col-md-6 col-lg-4 col-xs-12">
+          <div class="<?php echo get_theme_mod('service_item_column'); ?> col-md-4 col-xs-12">
             <div class="services-item wow fadeInRight" data-wow-delay="0.3s">
               <div class="icon">
-                <i class="lni-pencil"></i>
+                <i class="<?php echo $service['service_icon']; ?>"></i>
               </div>
               <div class="services-content">
-                <h3><a href="#">Content Writing</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde perspiciatis dicta labore nulla beatae quaerat quia incidunt laborum aspernatur...</p>
+                <h3><a href="#"><?php echo $service['service_title']; ?></a></h3>
+                <p><?php echo $service['service_desc']; ?></p>
               </div>
             </div>
           </div>
-          <!-- Services item -->
-          <div class="col-md-6 col-lg-4 col-xs-12">
-            <div class="services-item wow fadeInRight" data-wow-delay="0.6s">
-              <div class="icon">
-                <i class="lni-briefcase"></i>
-              </div>
-              <div class="services-content">
-                <h3><a href="#">Digital Marketing</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde perspiciatis dicta labore nulla beatae quaerat quia incidunt laborum aspernatur...</p>
-              </div>
-            </div>
-          </div>
-          <!-- Services item -->
-          <div class="col-md-6 col-lg-4 col-xs-12">
-            <div class="services-item wow fadeInRight" data-wow-delay="0.9s">
-              <div class="icon">
-                <i class="lni-cog"></i>
-              </div>
-              <div class="services-content">
-                <h3><a href="#">Web Development</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde perspiciatis dicta labore nulla beatae quaerat quia incidunt laborum aspernatur...</p>
-              </div>
-            </div>
-          </div>
-          <!-- Services item -->
-          <div class="col-md-6 col-lg-4 col-xs-12">
-            <div class="services-item wow fadeInRight" data-wow-delay="1.2s">
-              <div class="icon">
-                <i class="lni-mobile"></i>
-              </div>
-              <div class="services-content">
-                <h3><a href="#">IOS & Android</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde perspiciatis dicta labore nulla beatae quaerat quia incidunt laborum aspernatur...</p>
-              </div>
-            </div>
-          </div>
-          <!-- Services item -->
-          <div class="col-md-6 col-lg-4 col-xs-12">
-            <div class="services-item wow fadeInRight" data-wow-delay="1.5s">
-              <div class="icon">
-                <i class="lni-layers"></i>
-              </div>
-              <div class="services-content">
-                <h3><a href="#">UI/UX Design</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde perspiciatis dicta labore nulla beatae quaerat quia incidunt laborum aspernatur...</p>
-              </div>
-            </div>
-          </div>
-          <!-- Services item -->
-          <div class="col-md-6 col-lg-4 col-xs-12">
-            <div class="services-item wow fadeInRight" data-wow-delay="1.8s">
-              <div class="icon">
-                <i class="lni-rocket"></i>
-              </div>
-              <div class="services-content">
-                <h3><a href="#">Branding & Identity</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde perspiciatis dicta labore nulla beatae quaerat quia incidunt laborum aspernatur...</p>
-              </div>
-            </div>
-          </div>
+          <?php endforeach ?>
         </div>
       </div>
     </section>
+    <?php endif; ?>
     <!-- Services Section End -->
+
 
     <!-- Start Video promo Section -->
     <section class="video-promo section-padding">
