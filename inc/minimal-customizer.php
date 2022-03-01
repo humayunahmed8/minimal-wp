@@ -25,7 +25,7 @@ Kirki::add_field( 'minimal_config', [
 	'settings' => 'minimal_color_setting',
 	'label'    => esc_html__( 'Theme Primary Color', 'minimal' ),
 	'section'  => 'minimal_color_set_section',
-	'default'  => esc_attr__( '#3d60f4' ),
+	'default'  => esc_attr__( '#3d60f4', 'minimal'),
 	'choices'     => [
 		'alpha' => true,
 	],
@@ -35,6 +35,26 @@ Kirki::add_field( 'minimal_config', [
 			'element'  => ':root',
 			'property' => '--primary-color',
 		]
+	],
+] );
+
+// Section Overlay
+Kirki::add_field( 'minimal_config', [
+	'type'        => 'color',
+	'settings'    => 'section_overlay',
+	'label'       => esc_html__( 'Section Overlay', 'minimal' ),
+	'description' => esc_html__( 'Add section overlay from here.', 'minimal' ),
+	'section'     => 'minimal_color_set_section',
+	'default'  => esc_attr__( 'rgba(15, 17, 27, 0.8)', 'minimal'),
+	'choices'     => [
+		'alpha' => true,
+	],
+	'transport'   => 'auto',
+	'output'      => [
+		[
+			'element' => '.overlay',
+			'property' => 'background',
+		],
 	],
 ] );
 
@@ -108,7 +128,7 @@ Kirki::add_field( 'minimal_config', [
 	'settings' => 'banner_button_url',
 	'label'    => esc_html__( 'Banner Button URL', 'minimal' ),
 	'section'  => 'banner_section',
-	'default'  => esc_attr__( '#' ),
+	'default'  => esc_attr__( '#', 'minimal' ),
 	'priority' => 10,
 	'transport' => 'postMessage',
 ] );
@@ -118,7 +138,7 @@ Kirki::add_field( 'minimal_config', [
 // 	'settings' => 'banner_button_color',
 // 	'label'    => esc_html__( 'Banner Button Color', 'minimal' ),
 // 	'section'  => 'banner_section',
-// 	'default'  => esc_attr__( '#3d60f4' ),
+// 	'default'  => esc_attr__( '#3d60f4', 'minimal' ),
 // 	'choices'     => [
 // 		'alpha' => true,
 // 	],
@@ -228,7 +248,7 @@ Kirki::add_field( 'minimal_config', [
 	'settings' => 'feature_content_btn_url',
 	'label'    => esc_html__( 'Feature Content Button URL', 'minimal' ),
 	'section'  => 'feature_section',
-	'default'  => esc_attr__( '#' ),
+	'default'  => esc_attr__( '#', 'minimal' ),
 ] );
 // Feature Content Button Background Color
 // Kirki::add_field( 'minimal_config', [
@@ -236,7 +256,7 @@ Kirki::add_field( 'minimal_config', [
 // 	'settings' => 'feature_content_btn_color',
 // 	'label'    => esc_html__( 'Feature Content Button Color', 'minimal' ),
 // 	'section'  => 'feature_section',
-// 	'default'  => esc_attr__( '#3d60f4' ),
+// 	'default'  => esc_attr__( '#3d60f4', 'minimal' ),
 // 	'choices'     => [
 // 		'alpha' => true,
 // 	],
@@ -299,7 +319,8 @@ Kirki::add_field( 'minimal_config', [
 		],
 	]
 ] );
-// Service Section
+// ## Service Section
+// ==========================
 Kirki::add_section( 'service_section', array(
     'title'          => esc_html__( 'Service Section', 'minimal' ),
     'description'    => esc_html__( 'Customize the service section form here.', 'minimal' ),
@@ -334,7 +355,7 @@ Kirki::add_field( 'minimal_config', [
 	'settings' => 'service_section_desc',
 	'label'    => esc_html__( 'Service Section Description', 'minimal' ),
 	'section'  => 'service_section',
-	'default'  => esc_html__( 'A desire to help and empower others between community contributors in technology began to grow in 2020.' ),
+	'default'  => esc_html__( 'A desire to help and empower others between community contributors in technology began to grow in 2020.', 'minimal' ),
 	'transport' => 'postMessage',
 	'js_vars' 	=> [
 		[
@@ -362,7 +383,7 @@ Kirki::add_field( 'minimal_config', [
 		[
 			'service_icon' => 'lni-pencil',
 			'service_title' => esc_html__( 'Service Title', 'minimal' ),
-			'service_desc'  => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde perspiciatis dicta labore nulla beatae quaerat quia incidunt laborum aspernatur...',
+			'service_desc'  => esc_html__('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde perspiciatis dicta labore nulla beatae quaerat quia incidunt laborum aspernatur...', 'minimal'),
 		],
 	],
 	'fields' => [
@@ -431,3 +452,64 @@ Kirki::add_field( 'minimal_config', [
 	]
 ] );
 
+// ## Video Section
+// ==========================
+Kirki::add_section( 'video_section', array(
+    'title'          => esc_html__( 'Video Section', 'minimal' ),
+    'description'    => esc_html__( 'Customize the video section form here.', 'minimal' ),
+    'panel'          => 'stack_panel',
+) );
+// Video Section Show and Hide 
+Kirki::add_field( 'minimal_config', [
+	'type'     => 'checkbox',
+	'settings' => 'video_section_show_hide',
+	'label'    => esc_html__( 'Show/Hide Video Section?', 'minimal' ),
+	'section'  => 'video_section',
+	'default'  => true,
+] );
+// Video Title
+Kirki::add_field( 'minimal_config', [
+	'type'     => 'text',
+	'settings' => 'video_title',
+	'label'    => esc_html__( 'Video Title', 'minimal' ),
+	'section'  => 'video_section',
+	'default'  => esc_html__( 'Watch Video' ),
+	'transport' => 'postMessage',
+	'js_vars' 	=> [
+		[
+			'element' => '.video-promo-content h2',
+			'function' => 'html',
+		]
+	]
+] );
+// Video Link/URL
+Kirki::add_field( 'minimal_config', [
+	'type'     => 'link',
+	'settings' => 'video_link',
+	'label'    => esc_html__( 'Video Link/URL', 'minimal' ),
+	'section'  => 'video_section',
+	'default'  => esc_attr__( 'https://www.youtube.com/watch?v=ScMzIvxBSi4', 'minimal'),
+	'transport' => 'postMessage',
+] );
+// Video Section Background
+Kirki::add_field( 'minimal_config', [
+	'type'        => 'background',
+	'settings'    => 'video_section_bg',
+	'label'       => esc_html__( 'Video Section Background', 'minimal' ),
+	'description' => esc_html__( 'Add section background from here.', 'minimal' ),
+	'section'     => 'video_section',
+	'default'     => [
+		'background-color'      => 'rgba(15,17,27,0.8)',
+		'background-image'      => '',
+		'background-repeat'     => 'repeat',
+		'background-position'   => 'center center',
+		'background-size'       => 'cover',
+		'background-attachment' => 'scroll',
+	],
+	'transport'   => 'auto',
+	'output'      => [
+		[
+			'element' => '.video-promo',
+		],
+	],
+] );

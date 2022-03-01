@@ -1,22 +1,22 @@
 <?php get_header(); ?>
     <!-- Hero Area Start -->
-      <div id="hero-area" class="hero-area-bg">
+    <div id="hero-area" class="hero-area-bg">
         <div class="container">
-          <div class="row">
-            <div class="col-md-12 col-sm-12">
-              <div class="contents text-center">
-                <h2 class="head-title wow fadeInUp"><?php echo get_theme_mod('banner_heading'); ?></h2>
-                <div class="header-button wow fadeInUp" data-wow-delay="0.3s">
-                  <a href="<?php echo get_theme_mod('banner_button_url'); ?>" class="btn btn-common"><?php echo get_theme_mod('banner_button_label'); ?></a>
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="contents text-center">
+                        <h2 class="head-title wow fadeInUp"><?php echo get_theme_mod('banner_heading'); ?></h2>
+                        <div class="header-button wow fadeInUp" data-wow-delay="0.3s">
+                            <a href="<?php echo get_theme_mod('banner_button_url'); ?>" class="btn btn-common"><?php echo get_theme_mod('banner_button_label'); ?></a>
+                        </div>
+                    </div>
+                    <div class="img-thumb text-center wow fadeInUp" data-wow-delay="0.6s">
+                        <img class="img-fluid" src="<?php echo get_theme_mod('banner_image');?>" alt="">
+                    </div>
                 </div>
-              </div>
-              <div class="img-thumb text-center wow fadeInUp" data-wow-delay="0.6s">
-                <img class="img-fluid" src="<?php echo get_theme_mod('banner_image');?>" alt="">
-              </div>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
     <!-- Hero Area End -->
 
     <!-- Feature Section Start -->
@@ -86,19 +86,21 @@
 
 
     <!-- Start Video promo Section -->
+    <?php if(get_theme_mod('video_section_show_hide', true) == true) : ?>
     <section class="video-promo section-padding">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
           <div class="col-md-12 col-sm-12">
             <div class="video-promo-content text-center wow fadeInUp" data-wow-delay="0.3s">
-              <a href="https://www.youtube.com/watch?v=yP6kdOZHids" class="video-popup"><i class="lni-film-play"></i></a>
-              <h2 class="mt-3 wow zoomIn" data-wow-duration="1000ms" data-wow-delay="100ms">Watch Video</h2>
+              <a href="<?php echo get_theme_mod('video_link'); ?>" class="video-popup"><i class="lni-film-play"></i></a>
+              <h2 class="mt-3 wow zoomIn" data-wow-duration="1000ms" data-wow-delay="100ms"><?php echo get_theme_mod('video_title'); ?></h2>
             </div>
           </div>
         </div>
       </div>
     </section>
+    <?php endif; ?>
     <!-- End Video Promo Section -->
 
     <!-- Team Section Start -->
