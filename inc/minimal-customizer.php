@@ -347,6 +347,13 @@ Kirki::add_field( 'minimal_config', [
 			'element' => '.section-title',
 			'function' => 'html',
 		]
+	],
+	'active_callback' => [
+		[
+			'setting'  => 'service_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
 	]
 ] );
 // Service Section Description
@@ -361,6 +368,13 @@ Kirki::add_field( 'minimal_config', [
 		[
 			'element' => '.section-header p',
 			'function' => 'html',
+		]
+	],
+	'active_callback' => [
+		[
+			'setting'  => 'service_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
 		]
 	]
 ] );
@@ -411,6 +425,13 @@ Kirki::add_field( 'minimal_config', [
 			'label'       => esc_html__( 'Service description', 'minimal' ),
 			'description' => esc_html__( '', 'minimal' ),
 		],
+	],
+	'active_callback' => [
+		[
+			'setting'  => 'service_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
 	]
 ] );
 // Service Column Select 
@@ -430,6 +451,13 @@ Kirki::add_field( 'minimal_config', [
 			'element' => '.services-item',
 			'property' => 'text-align'
 		]
+	], 
+	'active_callback' => [
+		[
+			'setting'  => 'service_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
 	]
 ] );
 // Service Item Alignment
@@ -448,6 +476,13 @@ Kirki::add_field( 'minimal_config', [
 		[
 			'element' => '.services-item',
 			'property' => 'text-align'
+		]
+	],
+	'active_callback' => [
+		[
+			'setting'  => 'service_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
 		]
 	]
 ] );
@@ -480,6 +515,13 @@ Kirki::add_field( 'minimal_config', [
 			'element' => '.video-promo-content h2',
 			'function' => 'html',
 		]
+	],
+	'active_callback' => [
+		[
+			'setting'  => 'video_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
 	]
 ] );
 // Video Link/URL
@@ -490,6 +532,13 @@ Kirki::add_field( 'minimal_config', [
 	'section'  => 'video_section',
 	'default'  => esc_attr__( 'https://www.youtube.com/watch?v=ScMzIvxBSi4', 'minimal'),
 	'transport' => 'postMessage',
+	'active_callback' => [
+		[
+			'setting'  => 'video_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
+	]
 ] );
 // Video Section Background
 Kirki::add_field( 'minimal_config', [
@@ -511,5 +560,131 @@ Kirki::add_field( 'minimal_config', [
 		[
 			'element' => '.video-promo',
 		],
+	], 
+	'active_callback' => [
+		[
+			'setting'  => 'video_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
+	]
+] );
+// ## Team Section
+// ==========================
+Kirki::add_section( 'team_section', array(
+    'title'          => esc_html__( 'Team Section', 'minimal' ),
+    'description'    => esc_html__( 'Customize the team section form here.', 'minimal' ),
+    'panel'          => 'stack_panel',
+) );
+// Team Section Show and Hide 
+Kirki::add_field( 'minimal_config', [
+	'type'     => 'checkbox',
+	'settings' => 'team_section_show_hide',
+	'label'    => esc_html__( 'Show/Hide Team Section?', 'minimal' ),
+	'section'  => 'team_section',
+	'default'  => true,
+] );
+// Team Section Title
+Kirki::add_field( 'minimal_config', [
+	'type'     => 'text',
+	'settings' => 'team_section_title',
+	'label'    => esc_html__( 'Team Section Title', 'minimal' ),
+	'section'  => 'team_section',
+	'default'  => esc_html__( 'Meet our team' ),
+	'transport' => 'postMessage',
+	'js_vars' 	=> [
+		[
+			'element' => '.section-title',
+			'function' => 'html',
+		]
+	],
+	'active_callback' => [
+		[
+			'setting'  => 'team_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
+	]
+] );
+// Team Section Description
+Kirki::add_field( 'minimal_config', [
+	'type'     => 'textarea',
+	'settings' => 'team_section_desc',
+	'label'    => esc_html__( 'Team Section Description', 'minimal' ),
+	'section'  => 'team_section',
+	'default'  => esc_html__( 'A desire to help and empower others between community contributors in technology began to grow in 2020.', 'minimal' ),
+	'transport' => 'postMessage',
+	'js_vars' 	=> [
+		[
+			'element' => '.section-header p',
+			'function' => 'html',
+		]
+	],
+	'active_callback' => [
+		[
+			'setting'  => 'team_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
+	]	
+] );
+// Team Member Repeater 
+Kirki::add_field( 'minimal_config', [
+	'type'        => 'repeater',
+	'label'       => esc_html__( 'Team Members', 'minimal' ),
+	'section'     => 'team_section',
+	'row_label' => [
+		'type'  => 'field',
+		'value' => esc_html__( 'Add New Team Member', 'minimal' ),
+		'field' => 'team_member_title',
+	],
+	'button_label' => esc_html__('Add Member', 'minimal' ),
+	'settings'     => 'team_item_repeater',
+	'choices' => [
+		'limit' => 4
+	],
+	'fields' => [
+		'team_member_profile_picture' => [
+			'type'        => 'image',
+			'label'       => esc_html__( 'Member Profile Picture', 'minimal' ),
+			'description' => esc_html__( '', 'minimal' ),
+		],
+		'team_member_title' => [
+			'type'        => 'text',
+			'label'       => esc_html__( 'Member Title', 'minimal' ),
+			'description' => esc_html__( '', 'minimal' ),
+			'default' => esc_html__( 'Team Member Title', 'minimal' ),
+		],
+		'team_member_designation'  => [
+			'type'        => 'text',
+			'label'       => esc_html__( 'Team Member Designation', 'minimal' ),
+			'description' => esc_html__( '', 'minimal' ),
+			'default' => esc_html__( 'CEO', 'minimal' ),
+		],
+		'team_member_facebook_url'  => [
+			'type'        => 'link',
+			'label'       => esc_html__( 'Team Member Facebook Link', 'minimal' ),
+			'description' => esc_html__( '', 'minimal' ),
+			'default' => esc_attr__( '#', 'minimal' ),
+		],
+		'team_member_twitter_url'  => [
+			'type'        => 'link',
+			'label'       => esc_html__( 'Team Member Twitter Link', 'minimal' ),
+			'description' => esc_html__( '', 'minimal' ),
+			'default' => esc_attr__( '#', 'minimal' ),
+		],
+		'team_member_instagram_url'  => [
+			'type'        => 'link',
+			'label'       => esc_html__( 'Team Member Instagram Link', 'minimal' ),
+			'description' => esc_html__( '', 'minimal' ),
+			'default' => esc_attr__( '#', 'minimal' ),
+		],
+	],
+	'active_callback' => [
+		[
+			'setting'  => 'team_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
 	],
 ] );
