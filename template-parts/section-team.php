@@ -25,9 +25,15 @@
                         <div class="team-overlay">
                             <div class="overlay-social-icon text-center">
                                 <ul class="social-icons">
-                                    <li><a href="<?php echo $team['team_member_facebook_url']; ?>"><i class="lni-facebook-filled" aria-hidden="true"></i></a></li>
-                                    <li><a href="<?php echo $team['team_member_twitter_url']; ?>"><i class="lni-twitter-filled" aria-hidden="true"></i></a></li>
-                                    <li><a href="<?php echo $team['team_member_instagram_url']; ?>"><i class="lni-instagram-filled" aria-hidden="true"></i></a></li>
+                                    <?php if($team['team_member_facebook_url']) : ?>
+                                        <li><a href="<?php echo $team['team_member_facebook_url']; ?>"><i class="lni-facebook-filled" aria-hidden="true"></i></a></li>
+                                    <?php endif; ?>
+                                    <?php if($team['team_member_twitter_url']) : ?>
+                                        <li><a href="<?php echo $team['team_member_twitter_url']; ?>"><i class="lni-twitter-filled" aria-hidden="true"></i></a></li>
+                                    <?php endif; ?>
+                                    <?php if($team['team_member_instagram_url']) : ?>
+                                        <li><a href="<?php echo $team['team_member_instagram_url']; ?>"><i class="lni-instagram-filled" aria-hidden="true"></i></a></li>
+                                    <?php endif; ?>
                                 </ul>
                             </div>
                         </div>

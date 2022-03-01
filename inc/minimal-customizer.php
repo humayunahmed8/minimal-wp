@@ -688,3 +688,94 @@ Kirki::add_field( 'minimal_config', [
 		]
 	],
 ] );
+
+// ## Counter Up Section
+// ==========================
+Kirki::add_section( 'counter_up_section', array(
+    'title'          => esc_html__( 'Counter Up Section', 'minimal' ),
+    'description'    => esc_html__( 'Customize the counter up section form here.', 'minimal' ),
+    'panel'          => 'stack_panel',
+) );
+// Couter Up Section Show and Hide 
+Kirki::add_field( 'minimal_config', [
+	'type'     => 'checkbox',
+	'settings' => 'counter_up_section_show_hide',
+	'label'    => esc_html__( 'Show/Hide Counter Up Section?', 'minimal' ),
+	'section'  => 'counter_up_section',
+	'default'  => true,
+] );
+// Counter Up Section Background
+Kirki::add_field( 'minimal_config', [
+	'type'        => 'background',
+	'settings'    => 'counter_up_section_bg',
+	'label'       => esc_html__( 'Counter Up Section Background', 'minimal' ),
+	'description' => esc_html__( 'Add section background from here.', 'minimal' ),
+	'section'     => 'counter_up_section',
+	'default'     => [
+		'background-color'      => '#000',
+		'background-image'      => '',
+		'background-repeat'     => 'repeat',
+		'background-position'   => 'center center',
+		'background-size'       => 'cover',
+		'background-attachment' => 'scroll',
+	],
+	'transport'   => 'auto',
+	'output'      => [
+		[
+			'element' => '#counter',
+		],
+	], 
+	'active_callback' => [
+		[
+			'setting'  => 'counter_up_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
+	]
+] );
+// Counter Up Repeater 
+Kirki::add_field( 'minimal_config', [
+	'type'        => 'repeater',
+	'label'       => esc_html__( 'Counter Up Item', 'minimal' ),
+	'section'     => 'counter_up_section',
+	'row_label' => [
+		'type'  => 'field',
+		'value' => esc_html__( 'Add New Counter Up', 'minimal' ),
+		'field' => 'counter_up_title',
+	],
+	'button_label' => esc_html__('Add Counter', 'minimal' ),
+	'settings'     => 'counter_up_item_repeater',
+	'choices' => [
+		'limit' => 4
+	],
+	'fields' => [
+		'counter_up_icon' => [
+			'type'        => 'select',
+			'label'       => esc_html__( 'Member Profile Picture', 'minimal' ),
+			'description' => esc_html__( '', 'minimal' ),
+			'default' => 'lni-users',
+			'choices' => [
+				'lni-users' => 'User',
+				'lni-emoji-smile' => 'Smile',
+				'lni-download' => 'Download',
+				'lni-thumbs-up' => 'Thumbs Up',
+			]
+		],
+		'counter_up_number' => [
+			'type'        => 'number',
+			'label'       => esc_html__( 'Counter Number', 'minimal' ),
+		],
+		'counter_up_title'  => [
+			'type'        => 'text',
+			'label'       => esc_html__( 'Counter up title', 'minimal' ),
+			'default' => esc_html__( 'Users', 'minimal' ),
+		],
+	],
+	'active_callback' => [
+		[
+			'setting'  => 'counter_up_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
+	],
+] );
