@@ -23,13 +23,15 @@ html {
   --color-social-twitter: #4a9cec;
   --color-social-instagram: #D6274D;
   --color-social-linkedin: #1260a2;
+  --primary-font: "Titillium Web";
+  --secondary-font: "Open Sans";
 }
 
 body {
   background: var(--color-white);
   font-size: 14px;
   font-weight: 400;
-  font-family: "Open Sans", sans-serif;
+  font-family: var(--secondary-font), sans-serif;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -48,7 +50,7 @@ h4 {
   font-size: 38px;
   color: var(--color-black);
   font-weight: 700;
-  font-family: "Titillium Web", sans-serif;
+  font-family: var(--primary-font), sans-serif;
 }
 
 a {
@@ -68,7 +70,7 @@ a a:focus {
 
 p {
   font-weight: 400;
-  font-family: "Open Sans", sans-serif;
+  font-family: var(--secondary-font), sans-serif;
   margin: 0px;
   font-size: 14px;
 }
@@ -121,7 +123,7 @@ a:not([href]):not([tabindex]) {
   height: 100%;
   top: 0px;
   left: 0px;
-  background: rgba(var(--overlay-rgb),0.8);
+  background: rgba(var(--overlay-rgb), 0.8);
 }
 
 .btn {
@@ -540,7 +542,7 @@ hr {
 }
 
 .navbar-expand-md .navbar-nav .nav-link {
-  font-family: "Titillium Web", sans-serif;
+  font-family: var(--primary-font), sans-serif;
   color: var(--text-color);
   font-weight: 600;
   padding: 8px 10px;
@@ -859,10 +861,10 @@ hr {
 
 #counter .counter-box {
   padding: 20px 15px;
-  background: rgba(var(--white-rgb),0.1) none repeat scroll 0 0;
+  background: rgba(var(--white-rgb), 0.1) none repeat scroll 0 0;
   overflow: hidden;
   border-radius: 0px;
-  box-shadow: 0px 9px 16px 0px rgba(var(--white-rgb),0.004);
+  box-shadow: 0px 9px 16px 0px rgba(var(--white-rgb), 0.004);
   text-align: center;
   position: relative;
 }
@@ -1085,7 +1087,7 @@ hr {
   text-transform: uppercase;
   font-size: 20px;
   font-weight: 600;
-  font-family: "Titillium Web", sans-serif;
+  font-family: var(--primary-font), sans-serif;
 }
 
 .shot-item:hover img {
@@ -1152,7 +1154,7 @@ hr {
 }
 
 #pricing .table .pricing-header .price-value {
-  font-family: "Titillium Web", sans-serif;
+  font-family: var(--primary-font), sans-serif;
   font-size: 30px;
   color: var(--color-black);
   position: relative;

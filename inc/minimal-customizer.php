@@ -11,6 +11,32 @@ Kirki::add_panel( 'stack_panel', array(
     'description' => esc_html__( 'Customize minimal theme', 'minimal' ),
 ) );
 
+// ## Color Setting
+//==========================
+Kirki::add_section( 'minimal_color_set_section', array(
+    'title'          => esc_html__( 'Color Setting', 'minimal' ),
+    'description'    => esc_html__( 'Change the theme default color from here.', 'minimal' ),
+    'panel'          => 'stack_panel',
+) );
+
+// Banner Button Background Color 
+Kirki::add_field( 'minimal_config', [
+	'type'     => 'color', // color,color-palette 
+	'settings' => 'minimal_color_setting',
+	'label'    => esc_html__( 'Theme Primary Color', 'minimal' ),
+	'section'  => 'minimal_color_set_section',
+	'default'  => esc_attr__( '#3d60f4' ),
+	'choices'     => [
+		'alpha' => true,
+	],
+	'transport'   => 'auto',
+	'output' => [
+		[
+			'element'  => ':root',
+			'property' => '--primary-color',
+		]
+	],
+] );
 
 // ## Banner Section
 //==========================
@@ -87,29 +113,29 @@ Kirki::add_field( 'minimal_config', [
 	'transport' => 'postMessage',
 ] );
 // Banner Button Background Color 
-Kirki::add_field( 'minimal_config', [
-	'type'     => 'color', // color,color-palette 
-	'settings' => 'banner_button_color',
-	'label'    => esc_html__( 'Banner Button Color', 'minimal' ),
-	'section'  => 'banner_section',
-	'default'  => esc_attr__( '#3d60f4' ),
-	'choices'     => [
-		'alpha' => true,
-	],
-	// 'choices'     => [
-	// 	'colors' => Kirki_Helper::get_material_design_colors( 'primary' ), // primary,all,array
-	// 	// 'colors' => [ '#000000', '#222222', '#444444',],
-	// 	'size'   => 20, // 10,15,20...
-	// 	'style'   => 'square', // square,round
-	// ],
-	'transport'   => 'auto',
-	'output' => [
-		[
-			'element'  => '.btn-common',
-			'property' => 'background-color',
-		]
-	],
-] );
+// Kirki::add_field( 'minimal_config', [
+// 	'type'     => 'color', // color,color-palette 
+// 	'settings' => 'banner_button_color',
+// 	'label'    => esc_html__( 'Banner Button Color', 'minimal' ),
+// 	'section'  => 'banner_section',
+// 	'default'  => esc_attr__( '#3d60f4' ),
+// 	'choices'     => [
+// 		'alpha' => true,
+// 	],
+// 	// 'choices'     => [
+// 	// 	'colors' => Kirki_Helper::get_material_design_colors( 'primary' ), // primary,all,array
+// 	// 	// 'colors' => [ '#000000', '#222222', '#444444',],
+// 	// 	'size'   => 20, // 10,15,20...
+// 	// 	'style'   => 'square', // square,round
+// 	// ],
+// 	'transport'   => 'auto',
+// 	'output' => [
+// 		[
+// 			'element'  => '.btn-common',
+// 			'property' => 'background-color',
+// 		]
+// 	],
+// ] );
 // Banner Image
 Kirki::add_field( 'minimal_config', [
 	'type'        => 'image',
@@ -205,23 +231,23 @@ Kirki::add_field( 'minimal_config', [
 	'default'  => esc_attr__( '#' ),
 ] );
 // Feature Content Button Background Color
-Kirki::add_field( 'minimal_config', [
-	'type'     => 'color', 
-	'settings' => 'feature_content_btn_color',
-	'label'    => esc_html__( 'Feature Content Button Color', 'minimal' ),
-	'section'  => 'feature_section',
-	'default'  => esc_attr__( '#3d60f4' ),
-	'choices'     => [
-		'alpha' => true,
-	],
-	'transport'   => 'auto',
-	'output' => [
-		[
-			'element'  => '.text-wrapper .btn-common',
-			'property' => 'background-color',
-		]
-	],
-] );
+// Kirki::add_field( 'minimal_config', [
+// 	'type'     => 'color', 
+// 	'settings' => 'feature_content_btn_color',
+// 	'label'    => esc_html__( 'Feature Content Button Color', 'minimal' ),
+// 	'section'  => 'feature_section',
+// 	'default'  => esc_attr__( '#3d60f4' ),
+// 	'choices'     => [
+// 		'alpha' => true,
+// 	],
+// 	'transport'   => 'auto',
+// 	'output' => [
+// 		[
+// 			'element'  => '.text-wrapper .btn-common',
+// 			'property' => 'background-color',
+// 		]
+// 	],
+// ] );
 
 
 // Feature List Repeater 
