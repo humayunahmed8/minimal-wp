@@ -11,9 +11,38 @@ include_once( dirname( __FILE__ ) . '/inc/kirki/kirki.php' );
 // Kirki Customizer
 require_once(get_theme_file_path('/inc/minimal-customizer.php'));
 
+// Minimal Theme Setup
+function minimal_setup() {
+    add_theme_support( 'post-thumbnails' );
+    add_theme_support( 'title-tag' );
 
-// Load Theme Script 
-function stack_scripts() {
+    register_nav_menus(array(
+        'primary-menu' => __('Main Menu', 'minimal'),
+    ));
+}
+add_action('after_setup_theme', 'minimal_setup');
+
+// Applied class to the wordpress menu anchor's
+add_filter( 'nav_menu_link_attributes', function($atts) {
+    $atts['class'] = "nav-link";
+    return $atts;
+}, 100, 1 );
+
+// Excerpt Length
+function minimal_custom_excerpt_length($length){
+    return 20;
+}
+add_action('excerpt_length', 'minimal_custom_excerpt_length');
+
+// Excerpt More 
+function minimal_excerpt_more($more){
+    return '...';
+}
+add_action('excerpt_more', 'minimal_excerpt_more');
+
+
+// Minimal Theme Script 
+function minimal_scripts() {
     wp_enqueue_style('bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css',array(),'4.1.1','all');
     wp_enqueue_style('line-icons', get_template_directory_uri() . '/assets/fonts/line-icons.css',array(),'1.0','all');
     wp_enqueue_style('slicknav', get_template_directory_uri() . '/assets/css/slicknav.css',array(),'1.0.3','all');
@@ -41,5 +70,5 @@ function stack_scripts() {
     wp_enqueue_script('slicknav', get_template_directory_uri() . '/assets/js/jquery.slicknav.js',array(),'1.0.4', true);
     wp_enqueue_script('minimal-main', get_template_directory_uri() . '/assets/js/main.js',array('jquery'),'1.0', true);
 }
-add_action('wp_enqueue_scripts', 'stack_scripts');
+add_action('wp_enqueue_scripts', 'minimal_scripts');
 

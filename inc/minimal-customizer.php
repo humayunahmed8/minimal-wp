@@ -1148,7 +1148,7 @@ Kirki::add_field( 'minimal_config', [
 		'portfolio_title' => [
 			'type'        => 'text',
 			'label'       => esc_html__( 'Portfolio Preview Image', 'minimal' ),
-			'Default'       => esc_html__( 'Portfolio Title', 'minimal' ),
+			'default'       => esc_html__( 'Portfolio Title', 'minimal' ),
 		],
 	],
 	'active_callback' => [
@@ -1160,3 +1160,160 @@ Kirki::add_field( 'minimal_config', [
 	],
 ] );
 
+// ## Testimonial Section
+// ==========================
+Kirki::add_section( 'testimonial_section', array(
+    'title'          => esc_html__( 'Testimonial Section', 'minimal' ),
+    'description'    => esc_html__( 'Customize the testimonial section form here.', 'minimal' ),
+    'panel'          => 'stack_panel',
+) );
+// Testimonial Section Show and Hide 
+Kirki::add_field( 'minimal_config', [
+	'type'     => 'switch',
+	'settings' => 'testimonial_section_show_hide',
+	'label'    => esc_html__( 'Show/Hide Testimonial Section?', 'minimal' ),
+	'section'  => 'testimonial_section',
+	'default'  => 'show',
+	'choices' => [
+		'show'  => esc_html__( 'Show', 'minimal' ),
+		'hide' => esc_html__( 'Hide', 'minimal' ),
+	]
+] );
+// Testimonial Section Background 
+Kirki::add_field( 'minimal_config', [
+	'type'        => 'background',
+	'settings'    => 'testimonial_section_bg',
+	'label'       => esc_html__( 'Testimonial Section Background', 'minimal' ),
+	'description' => esc_html__( 'Add section background from here.', 'minimal' ),
+	'section'     => 'testimonial_section',
+	'default'     => [
+		'background-color'      => 'rgba(15,17,27,0.8)',
+		'background-image'      => '',
+		'background-repeat'     => 'repeat',
+		'background-position'   => 'center center',
+		'background-size'       => 'cover',
+		'background-attachment' => 'scroll',
+	],
+	'transport'   => 'auto',
+	'output'      => [
+		[
+			'element' => '.testimonial',
+		],
+	], 
+	'active_callback' => [
+		[
+			'setting'  => 'testimonial_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
+	]
+] );
+// Testimonial Repeater 
+Kirki::add_field( 'minimal_config', [
+	'type'        => 'repeater',
+	'label'       => esc_html__( 'Testimonials', 'minimal' ),
+	'section'     => 'testimonial_section',
+	'row_label' => [
+		'type'  => 'field',
+		'value' => esc_html__( 'Testimonial', 'minimal' ),
+	],
+	'button_label' => esc_html__('Add testimonial', 'minimal' ),
+	'settings'     => 'testimonial_repeater',
+	'choices' => [
+		'limit' => 6
+	],
+	'fields' => [
+		'testimonial_author_thumb'  => [
+			'type'    => 'image',
+			'label'   => esc_html__( 'Testimonial Author Thumbnail', 'minimal' ),
+			'description' => esc_html__( '', 'minimal' ),
+		],
+		'testimonial_author_name' => [
+			'type'        => 'text',
+			'label'       => esc_html__( 'Testimonial Author Name', 'minimal' ),
+			'description' => esc_html__( '', 'minimal' ),
+			'default'       => esc_html__( 'Domeni GEsson', 'minimal' ),
+		],
+		'testimonial_author_designation' => [
+			'type'        => 'text',
+			'label'       => esc_html__( 'Testimonial Author Designation', 'minimal' ),
+			'default'       => esc_html__( 'UI/UX Designer', 'minimal' ),
+		],
+		'testimonial_author_comments' => [
+			'type'        => 'textarea',
+			'label'       => esc_html__( 'Testimonial Author Comments', 'minimal' ),
+			'default'       => esc_html__( 'Holisticly empower leveraged ROI whereas effective web-readiness. Completely enable emerging meta-services with cross-platform web services. Quickly initiate inexpensive total linkage rather than extensible scenarios. Holisticly empower leveraged ROI whereas effective web-readiness.', 'minimal' ),
+		],
+	],
+	'active_callback' => [
+		[
+			'setting'  => 'testimonial_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
+	],
+] );
+
+// ## Blog Section
+// ==========================
+Kirki::add_section( 'blog_section', array(
+    'title'          => esc_html__( 'Blog Section', 'minimal' ),
+    'description'    => esc_html__( 'Customize the blog section form here.', 'minimal' ),
+    'panel'          => 'stack_panel',
+) );
+// Blog Section Show and Hide 
+Kirki::add_field( 'minimal_config', [
+	'type'     => 'switch',
+	'settings' => 'blog_section_show_hide',
+	'label'    => esc_html__( 'Show/Hide Blog Section?', 'minimal' ),
+	'section'  => 'blog_section',
+	'default'  => 'show',
+	'choices' => [
+		'show'  => esc_html__( 'Show', 'minimal' ),
+		'hide' => esc_html__( 'Hide', 'minimal' ),
+	]
+] );
+// Blog Section Title
+Kirki::add_field( 'minimal_config', [
+	'type'     => 'text',
+	'settings' => 'blog_section_title',
+	'label'    => esc_html__( 'Blog Section Title', 'minimal' ),
+	'section'  => 'blog_section',
+	'default'  => esc_html__( 'Latest blog' ),
+	'transport' => 'postMessage',
+	'js_vars' 	=> [
+		[
+			'element' => '#blog .section-header .section-title',
+			'function' => 'html',
+		]
+	],
+	'active_callback' => [
+		[
+			'setting'  => 'blog_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
+	]
+] );
+// Blog Section Description
+Kirki::add_field( 'minimal_config', [
+	'type'     => 'textarea',
+	'settings' => 'blog_section_title_desc',
+	'label'    => esc_html__( 'Blog Title Description', 'minimal' ),
+	'section'  => 'blog_section',
+	'default'  => esc_html__( 'A desire to help and empower others between community contributors in technology began to grow in 2020.', 'minimal' ),
+	'transport' => 'postMessage',
+	'js_vars' 	=> [
+		[
+			'element' => '#blog .section-header p',
+			'function' => 'html',
+		]
+	],
+	'active_callback' => [
+		[
+			'setting'  => 'blog_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
+	]	
+] );

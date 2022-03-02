@@ -20,53 +20,13 @@
             <i class="lni-menu"></i>
           </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
-              <li class="nav-item active">
-                <a class="nav-link" href="#hero-area">
-                  Home
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#feature">
-                  Feature
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#services">
-                  Services
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#team">
-                  Team
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#pricing">
-                  Pricing
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#portfolios">
-                  Works
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#testimonial">
-                  Testimonial
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#blog">
-                  Blog
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#contact">
-                  Contact
-                </a>
-              </li>
-            </ul>
+            <?php
+            wp_nav_menu(array(
+              'theme_location'=> 'primary-menu',
+              'menu_class'    => 'navbar-nav mr-auto w-100 justify-content-end clearfix',
+              'container'     => false,
+            ));
+            ?>
           </div>
         </div>
       </nav>
