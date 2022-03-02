@@ -344,7 +344,7 @@ Kirki::add_field( 'minimal_config', [
 	'transport' => 'postMessage',
 	'js_vars' 	=> [
 		[
-			'element' => '.section-title',
+			'element' => '#services .section-title',
 			'function' => 'html',
 		]
 	],
@@ -366,7 +366,7 @@ Kirki::add_field( 'minimal_config', [
 	'transport' => 'postMessage',
 	'js_vars' 	=> [
 		[
-			'element' => '.section-header p',
+			'element' => '#services .section-header p',
 			'function' => 'html',
 		]
 	],
@@ -594,7 +594,7 @@ Kirki::add_field( 'minimal_config', [
 	'transport' => 'postMessage',
 	'js_vars' 	=> [
 		[
-			'element' => '.section-title',
+			'element' => '#team .section-title',
 			'function' => 'html',
 		]
 	],
@@ -616,7 +616,7 @@ Kirki::add_field( 'minimal_config', [
 	'transport' => 'postMessage',
 	'js_vars' 	=> [
 		[
-			'element' => '.section-header p',
+			'element' => '#team .section-header p',
 			'function' => 'html',
 		]
 	],
@@ -733,6 +733,7 @@ Kirki::add_field( 'minimal_config', [
 		]
 	]
 ] );
+
 // Counter Up Repeater 
 Kirki::add_field( 'minimal_config', [
 	'type'        => 'repeater',
@@ -774,6 +775,168 @@ Kirki::add_field( 'minimal_config', [
 	'active_callback' => [
 		[
 			'setting'  => 'counter_up_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
+	],
+] );
+
+// ## Pricing Section
+// ==========================
+Kirki::add_section( 'pricing_section', array(
+    'title'          => esc_html__( 'Pricing Section', 'minimal' ),
+    'description'    => esc_html__( 'Customize the pricing section form here.', 'minimal' ),
+    'panel'          => 'stack_panel',
+) );
+// Pricing Section Show and Hide 
+Kirki::add_field( 'minimal_config', [
+	'type'     => 'checkbox',
+	'settings' => 'pricing_section_show_hide',
+	'label'    => esc_html__( 'Show/Hide Pricing Section?', 'minimal' ),
+	'section'  => 'pricing_section',
+	'default'  => true,
+] );
+// Pricing Section Title
+Kirki::add_field( 'minimal_config', [
+	'type'     => 'text',
+	'settings' => 'pricing_section_title',
+	'label'    => esc_html__( 'Pricing Section Title', 'minimal' ),
+	'section'  => 'pricing_section',
+	'default'  => esc_html__( 'Best pricing' ),
+	'transport' => 'postMessage',
+	'js_vars' 	=> [
+		[
+			'element' => '#pricing .section-title',
+			'function' => 'html',
+		]
+	],
+	'active_callback' => [
+		[
+			'setting'  => 'pricing_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
+	]
+] );
+// Pricing Section Description
+Kirki::add_field( 'minimal_config', [
+	'type'     => 'textarea',
+	'settings' => 'pricing_section_desc',
+	'label'    => esc_html__( 'Pricing Section Description', 'minimal' ),
+	'section'  => 'pricing_section',
+	'default'  => esc_html__( 'A desire to help and empower others between community contributors in technology began to grow in 2020.', 'minimal' ),
+	'transport' => 'postMessage',
+	'js_vars' 	=> [
+		[
+			'element' => '#pricing .section-header p',
+			'function' => 'html',
+		]
+	],
+	'active_callback' => [
+		[
+			'setting'  => 'pricing_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
+	]	
+] );
+// Pricing Repeater 
+Kirki::add_field( 'minimal_config', [
+	'type'        => 'repeater',
+	'label'       => esc_html__( 'Pricing Item', 'minimal' ),
+	'section'     => 'pricing_section',
+	'row_label' => [
+		'type'  => 'field',
+		'value' => esc_html__( 'Add New Pricing', 'minimal' ),
+		'field' => 'pricing_plan_title',
+	],
+	'button_label' => esc_html__('Add Pricing', 'minimal' ),
+	'settings'     => 'pricing_item_repeater',
+	'choices' => [
+		'limit' => 3
+	],
+	'fields' => [
+		'featured_plan' => [
+			'type'        => 'checkbox',
+			'label'       => esc_html__( 'Featured?', 'minimal' ),
+			'description' => esc_html__( '', 'minimal' ),
+			'default' => false
+		],
+		'pricing_plan_title'  => [
+			'type'    => 'text',
+			'label'   => esc_html__( 'Pricing Plan Title', 'minimal' ),
+			'default' => esc_html__( 'Basic', 'minimal' ),
+		],
+		'pricing_plan_sub' => [
+			'type'        => 'select',
+			'label'       => esc_html__( 'Select Plan Subscription', 'minimal' ),
+			'description' => esc_html__( '', 'minimal' ),
+			'default' => 'Month',
+			'choices' => [
+				'Year' => esc_html__('Yearly'),
+				'Month' => esc_html__('Monthly'),
+			]
+		],
+		'plan_price' => [
+			'type'       => 'number',
+			'label'      => esc_html__( 'Plan Price', 'minimal' ),
+			'default'	 => esc_html__( '00.00', 'minimal' ),
+		],
+		'plan_feature_1' => [
+			'type'      => 'text',
+			'label'     => esc_html__( 'Plan Features', 'minimal' ),
+			'default'	=> esc_html__( 'Business Analyzing', 'minimal' )
+		],
+		'plan_feature_2' => [
+			'type'      => 'text',
+			'label'     => esc_html__( 'Plan Features', 'minimal' ),
+			'default'	=> esc_html__( '24/7 Tech Suport', 'minimal' )
+		],
+		'plan_feature_3' => [
+			'type'      => 'text',
+			'label'     => esc_html__( 'Plan Features', 'minimal' ),
+			'default'	=> esc_html__( 'Operational Excellence', 'minimal' )
+		],
+		'plan_feature_4' => [
+			'type'      => 'text',
+			'label'     => esc_html__( 'Plan Features', 'minimal' ),
+			'default'	=> esc_html__( 'Business Idea Ready', 'minimal' )
+		],
+		'plan_feature_5' => [
+			'type'      => 'text',
+			'label'     => esc_html__( 'Plan Features', 'minimal' ),
+			'default'	=> esc_html__( '2 Database', 'minimal' )
+		],
+		'plan_feature_6' => [
+			'type'      => 'text',
+			'label'     => esc_html__( 'Plan Features', 'minimal' ),
+			'default'	=> esc_html__( 'Customer Support', 'minimal' )
+		],
+		'plan_purchase_btn_label' => [
+			'type'       => 'text',
+			'label'      => esc_html__( 'Purchase Button Label', 'minimal' ),
+			'default'	 => esc_html__( 'Get it', 'minimal' ),
+		],
+		'plan_purchase_btn_link' => [
+			'type'       => 'text',
+			'label'      => esc_html__( 'Purchase Button Link', 'minimal' ),
+			'default'	 => esc_attr__( '#', 'minimal' ),
+		],
+		'plan_animation' => [
+			'type'        => 'select',
+			'label'       => esc_html__( 'Select Animation', 'minimal' ),
+			'description' => esc_html__( '', 'minimal' ),
+			'default' => 'fadeInUp',
+			'choices' => [
+				'fadeInLeft' => esc_html__('Fade Left'),
+				'fadeInUp' => esc_html__('Fade Up'),
+				'fadeInRight' => esc_html__('Fade Right'),
+			]
+		],
+	],
+	'active_callback' => [
+		[
+			'setting'  => 'pricing_section_show_hide',
 			'operator' => '==',
 			'value'    => true,
 		]

@@ -1171,7 +1171,7 @@ hr {
   top: -18px;
 }
 
-#pricing .table .pricing-header .price-value span {
+#pricing .table .pricing-header .price-value span:last-child {
   font-size: 14px;
   font-weight: 600;
 }

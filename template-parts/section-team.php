@@ -19,7 +19,6 @@
                         }else {
                             $team_image = get_template_directory_uri() . '/assets/img/team/team-01.png';
                         }
-                        
                         ?>
                         <img class="img-fluid" src="<?php echo $team_image?>" alt="">
                         <div class="team-overlay">

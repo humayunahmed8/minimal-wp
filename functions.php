@@ -1,26 +1,15 @@
 <?php 
 // Import Kirki Plugin
-function minimal_kirki_configuration() {
-    return array( 'url_path'     => get_stylesheet_directory_uri() . '/inc/kirki/' );
-}
-add_filter( 'kirki/config', 'minimal_kirki_configuration' );
+// function minimal_kirki_configuration() {
+//     return array( 'url_path'     => get_stylesheet_directory_uri() . '/inc/kirki/' );
+// }
+// add_filter( 'kirki/config', 'minimal_kirki_configuration' );
+
 // Import Kirki Plugin File
 include_once( dirname( __FILE__ ) . '/inc/kirki/kirki.php' );
+
 // Kirki Customizer
 require_once(get_theme_file_path('/inc/minimal-customizer.php'));
-
-// function kirki_demo_configuration_sample_styling( $config ) {
- 
-//     $config['logo_image']   = 'http://kirki.org/img/kirki-new-logo-white.png';
-//     $config['description']  = __( 'The theme description.', 'kirki' );
-//     $config['color_accent'] = '#00bcd4';
-//     $config['color_back']   = '#455a64';
-//     $config['width']        = '20%';
- 
-//     return $config;
- 
-// }
-// add_filter( 'kirki/config', 'kirki_demo_configuration_sample_styling' );
 
 
 // Load Theme Script 
