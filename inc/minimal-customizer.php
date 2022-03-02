@@ -1055,3 +1055,108 @@ Kirki::add_field( 'minimal_config', [
 		]
 	],
 ] );
+
+
+// ## Portfolio Section
+// ==========================
+Kirki::add_section( 'portfolio_section', array(
+    'title'          => esc_html__( 'Portfolio Section', 'minimal' ),
+    'description'    => esc_html__( 'Customize the skills section form here.', 'minimal' ),
+    'panel'          => 'stack_panel',
+) );
+// Portfolio Section Show and Hide 
+Kirki::add_field( 'minimal_config', [
+	'type'     => 'switch',
+	'settings' => 'portfolio_section_show_hide',
+	'label'    => esc_html__( 'Show/Hide Portfolio Section?', 'minimal' ),
+	'section'  => 'portfolio_section',
+	'default'  => 'show',
+	'choices' => [
+		'show'  => esc_html__( 'Show', 'minimal' ),
+		'hide' => esc_html__( 'Hide', 'minimal' ),
+	]
+] );
+// Portfolio Section Title
+Kirki::add_field( 'minimal_config', [
+	'type'     => 'text',
+	'settings' => 'portfolio_section_title',
+	'label'    => esc_html__( 'Portfolio Section Title', 'minimal' ),
+	'section'  => 'portfolio_section',
+	'default'  => esc_html__( 'Our works' ),
+	'transport' => 'postMessage',
+	'js_vars' 	=> [
+		[
+			'element' => '#portfolios .section-header .section-title',
+			'function' => 'html',
+		]
+	],
+	'active_callback' => [
+		[
+			'setting'  => 'portfolio_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
+	]
+] );
+// Portfolio Section Description
+Kirki::add_field( 'minimal_config', [
+	'type'     => 'textarea',
+	'settings' => 'portfolio_section_desc',
+	'label'    => esc_html__( 'Portfolio Title Description', 'minimal' ),
+	'section'  => 'portfolio_section',
+	'default'  => esc_html__( 'A desire to help and empower others between community contributors in technology began to grow in 2020.', 'minimal' ),
+	'transport' => 'postMessage',
+	'js_vars' 	=> [
+		[
+			'element' => '#portfolios .section-header p',
+			'function' => 'html',
+		]
+	],
+	'active_callback' => [
+		[
+			'setting'  => 'portfolio_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
+	]	
+] );
+// Portfolio Repeater 
+Kirki::add_field( 'minimal_config', [
+	'type'        => 'repeater',
+	'label'       => esc_html__( 'Your Portfolios', 'minimal' ),
+	'section'     => 'portfolio_section',
+	'row_label' => [
+		'type'  => 'field',
+		'value' => esc_html__( 'Portfolio', 'minimal' ),
+	],
+	'button_label' => esc_html__('Add portfolio', 'minimal' ),
+	'settings'     => 'portfolio_repeater',
+	'choices' => [
+		'limit' => 6
+	],
+	'fields' => [
+		'portfolio_thumbnail'  => [
+			'type'    => 'image',
+			'label'   => esc_html__( 'Portfolio Thumbnail', 'minimal' ),
+			'description' => esc_html__( '', 'minimal' ),
+		],
+		'portfolio_preview' => [
+			'type'        => 'image',
+			'label'       => esc_html__( 'Portfolio Preview Image', 'minimal' ),
+			'description' => esc_html__( '', 'minimal' ),
+		],
+		'portfolio_title' => [
+			'type'        => 'text',
+			'label'       => esc_html__( 'Portfolio Preview Image', 'minimal' ),
+			'Default'       => esc_html__( 'Portfolio Title', 'minimal' ),
+		],
+	],
+	'active_callback' => [
+		[
+			'setting'  => 'portfolio_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
+	],
+] );
+
