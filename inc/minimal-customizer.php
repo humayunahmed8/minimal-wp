@@ -942,3 +942,116 @@ Kirki::add_field( 'minimal_config', [
 		]
 	],
 ] );
+
+
+
+// ## Skills Section
+// ==========================
+Kirki::add_section( 'skills_section', array(
+    'title'          => esc_html__( 'Skills Section', 'minimal' ),
+    'description'    => esc_html__( 'Customize the skills section form here.', 'minimal' ),
+    'panel'          => 'stack_panel',
+) );
+// Skills Section Show and Hide 
+Kirki::add_field( 'minimal_config', [
+	'type'     => 'checkbox',
+	'settings' => 'skills_section_show_hide',
+	'label'    => esc_html__( 'Show/Hide Skills Section?', 'minimal' ),
+	'section'  => 'skills_section',
+	'default'  => true,
+] );
+// Skills Image
+Kirki::add_field( 'minimal_config', [
+	'type'        => 'image',
+	'settings'    => 'skills_image',
+	'label'       => esc_html__( 'Skills Image', 'minimal' ),
+	'description' => esc_html__( 'Add Skills Image Here.', 'minimal' ),
+	'section'     => 'skills_section',
+	'active_callback' => [
+		[
+			'setting'  => 'skills_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
+	]
+] );
+// Skills Title
+Kirki::add_field( 'minimal_config', [
+	'type'     => 'text',
+	'settings' => 'skills_content_title',
+	'label'    => esc_html__( 'Skills Content Title', 'minimal' ),
+	'section'  => 'skills_section',
+	'default'  => esc_html__( 'Our skills' ),
+	'transport' => 'postMessage',
+	'js_vars' 	=> [
+		[
+			'element' => '.skill-area .site-heading .section-title',
+			'function' => 'html',
+		]
+	],
+	'active_callback' => [
+		[
+			'setting'  => 'skills_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
+	]
+] );
+// Skills Content Description
+Kirki::add_field( 'minimal_config', [
+	'type'     => 'textarea',
+	'settings' => 'skills_content_desc',
+	'label'    => esc_html__( 'Skills Content Description', 'minimal' ),
+	'section'  => 'skills_section',
+	'default'  => esc_html__( 'A desire to help and empower others between community contributors in technology began to grow in 2020.', 'minimal' ),
+	'transport' => 'postMessage',
+	'js_vars' 	=> [
+		[
+			'element' => '.skill-area .site-heading p',
+			'function' => 'html',
+		]
+	],
+	'active_callback' => [
+		[
+			'setting'  => 'skills_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
+	]	
+] );
+// Skills Bar Repeater 
+Kirki::add_field( 'minimal_config', [
+	'type'        => 'repeater',
+	'label'       => esc_html__( 'Skills Progress Bar', 'minimal' ),
+	'section'     => 'skills_section',
+	'row_label' => [
+		'type'  => 'field',
+		'value' => esc_html__( 'Add New Skills', 'minimal' ),
+		'field' => 'skills_bar_title',
+	],
+	'button_label' => esc_html__('Add Skills', 'minimal' ),
+	'settings'     => 'skills_progress_bar_repeater',
+	'choices' => [
+		'limit' => 3
+	],
+	'fields' => [
+		'skills_bar_title'  => [
+			'type'    => 'text',
+			'label'   => esc_html__( 'Progress Bar Title', 'minimal' ),
+			'default' => esc_html__( 'Strategy & Analysis', 'minimal' ),
+		],
+		'skills_bar_percentage' => [
+			'type'        => 'number',
+			'label'       => esc_html__( 'Skills Percentage', 'minimal' ),
+			'description' => esc_html__( '', 'minimal' ),
+			'default' => '88',
+		],
+	],
+	'active_callback' => [
+		[
+			'setting'  => 'skills_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
+	],
+] );
