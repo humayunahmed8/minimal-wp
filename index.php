@@ -1,4 +1,15 @@
-<?php get_header(); ?>
+<?php 
+
+/*
+Template Name: Homepage
+*/
+
+if(is_front_page()){
+  get_header();
+}else{
+  get_header('blog');
+}
+?>
     
     <!-- Hero Section -->
     <?php get_template_part('template-parts/section', 'hero') ?>
