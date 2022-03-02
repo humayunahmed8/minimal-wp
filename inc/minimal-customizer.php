@@ -1317,3 +1317,97 @@ Kirki::add_field( 'minimal_config', [
 		]
 	]	
 ] );
+
+
+// ## Client Section
+// ==========================
+Kirki::add_section( 'client_section', array(
+    'title'          => esc_html__( 'Client Section', 'minimal' ),
+    'description'    => esc_html__( 'Customize the client section form here.', 'minimal' ),
+    'panel'          => 'stack_panel',
+) );
+// Client Section Show and Hide 
+Kirki::add_field( 'minimal_config', [
+	'type'     => 'switch',
+	'settings' => 'client_section_show_hide',
+	'label'    => esc_html__( 'Show/Hide Client Section?', 'minimal' ),
+	'section'  => 'client_section',
+	'default'  => 'show',
+	'choices' => [
+		'show'  => esc_html__( 'Show', 'minimal' ),
+		'hide' => esc_html__( 'Hide', 'minimal' ),
+	]
+] );
+// Client Section Title
+Kirki::add_field( 'minimal_config', [
+	'type'     => 'text',
+	'settings' => 'client_section_title',
+	'label'    => esc_html__( 'Client Section Title', 'minimal' ),
+	'section'  => 'client_section',
+	'default'  => esc_html__( 'Notable clients' ),
+	'transport' => 'postMessage',
+	'js_vars' 	=> [
+		[
+			'element' => '#clients .section-header .section-title',
+			'function' => 'html',
+		]
+	],
+	'active_callback' => [
+		[
+			'setting'  => 'client_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
+	]
+] );
+// Client Section Description
+Kirki::add_field( 'minimal_config', [
+	'type'     => 'textarea',
+	'settings' => 'client_section_title_desc',
+	'label'    => esc_html__( 'Client Title Description', 'minimal' ),
+	'section'  => 'client_section',
+	'default'  => esc_html__( 'A desire to help and empower others between community contributors in technology began to grow in 2020.', 'minimal' ),
+	'transport' => 'postMessage',
+	'js_vars' 	=> [
+		[
+			'element' => '#clients .section-header p',
+			'function' => 'html',
+		]
+	],
+	'active_callback' => [
+		[
+			'setting'  => 'client_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
+	]	
+] );
+// Clients Repeater 
+Kirki::add_field( 'minimal_config', [
+	'type'        => 'repeater',
+	'label'       => esc_html__( 'Our clients', 'minimal' ),
+	'section'     => 'client_section',
+	'row_label' => [
+		'type'  => 'field',
+		'value' => esc_html__( 'Clients', 'minimal' ),
+	],
+	'button_label' => esc_html__('Add Clients', 'minimal' ),
+	'settings'     => 'client_item_repeater',
+	'choices' => [
+		'limit' => 5
+	],
+	'fields' => [
+		'client_thumb'  => [
+			'type'    => 'image',
+			'label'   => esc_html__( 'Client Logo', 'minimal' ),
+			'description' => esc_html__( '', 'minimal' ),
+		],
+	],
+	'active_callback' => [
+		[
+			'setting'  => 'client_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
+	],
+] );
