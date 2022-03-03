@@ -69,6 +69,8 @@ function minimal_widget_areas() {
 }
 add_action('widgets_init', 'minimal_widget_areas');
 
+// Disables the block editor from managing widgets in the Gutenberg plugin.
+add_filter( 'gutenberg_use_widgets_block_editor', '__return_false' );
 // Disables the block editor from managing widgets.
 add_filter( 'use_widgets_block_editor', '__return_false' );
 
@@ -113,7 +115,7 @@ class Popular_Posts extends WP_Widget {
 	function __construct() {
 		parent::__construct(
 			'popular-post', 
-			'Popular Post',
+			__('Popular Post'),
 			array( 'description' => __( 'Show popular post here' ), ) 
 		);
 		add_action( 'widgets_init', function() {
