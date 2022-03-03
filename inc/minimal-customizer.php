@@ -1502,13 +1502,13 @@ Kirki::add_field( 'minimal_config', [
 	'label'    => esc_html__( 'Contact Section Title', 'minimal' ),
 	'section'  => 'contact_section',
 	'default'  => esc_html__( 'We are a friendly bunch..' ),
-	// 'transport' => 'postMessage',
-	// 'js_vars' 	=> [
-	// 	[
-	// 		'element' => '#contact .contact-title h1',
-	// 		'function' => 'html',
-	// 	]
-	// ],
+	'transport' => 'postMessage',
+	'js_vars' 	=> [
+		[
+			'element' => '#contact .contact-title h1',
+			'function' => 'html',
+		]
+	],
 	'active_callback' => [
 		[
 			'setting'  => 'contact_section_show_hide',
@@ -1524,13 +1524,13 @@ Kirki::add_field( 'minimal_config', [
 	'label'    => esc_html__( 'Contact Title Description', 'minimal' ),
 	'section'  => 'contact_section',
 	'default'  => esc_html__( 'We create projects for companies and startups with a passion for quality', 'minimal' ),
-	// 'transport' => 'postMessage',
-	// 'js_vars' 	=> [
-	// 	[
-	// 		'element' => '#contact .contact-title p',
-	// 		'function' => 'html',
-	// 	]
-	// ],
+	'transport' => 'postMessage',
+	'js_vars' 	=> [
+		[
+			'element' => '#contact .contact-title p',
+			'function' => 'html',
+		]
+	],
 	'active_callback' => [
 		[
 			'setting'  => 'contact_section_show_hide',
@@ -1546,13 +1546,13 @@ Kirki::add_field( 'minimal_config', [
 	'label'    => esc_html__( 'Contact List Title', 'minimal' ),
 	'section'  => 'contact_section',
 	'default'  => esc_html__( 'Contact Us', 'minimal' ),
-	// 'transport' => 'postMessage',
-	// 'js_vars' 	=> [
-	// 	[
-	// 		'element' => '#contact .contact-right-area .contact-title',
-	// 		'function' => 'html',
-	// 	]
-	// ],
+	'transport' => 'postMessage',
+	'js_vars' 	=> [
+		[
+			'element' => '.contact-right-area h2',
+			'function' => 'html',
+		]
+	],
 	'active_callback' => [
 		[
 			'setting'  => 'contact_section_show_hide',
