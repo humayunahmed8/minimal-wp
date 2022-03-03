@@ -16,6 +16,19 @@ function minimal_setup() {
     add_theme_support( 'post-thumbnails' );
     add_theme_support( 'title-tag' );
 
+    add_theme_support(
+		'html5',
+		array(
+			'search-form',
+			'comment-form',
+			'comment-list',
+			'gallery',
+			'caption',
+			'style',
+			'script',
+		)
+	);
+
     register_nav_menus(array(
         'primary-menu' => __('Main Menu', 'minimal'),
     ));
@@ -69,6 +82,9 @@ function minimal_scripts() {
     wp_enqueue_script('waypoint', get_template_directory_uri() . '/assets/js/waypoints.min.js',array(),'2.0.3', true);
     wp_enqueue_script('slicknav', get_template_directory_uri() . '/assets/js/jquery.slicknav.js',array(),'1.0.4', true);
     wp_enqueue_script('minimal-main', get_template_directory_uri() . '/assets/js/main.js',array('jquery'),'1.0', true);
+    if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
 }
 add_action('wp_enqueue_scripts', 'minimal_scripts');
 

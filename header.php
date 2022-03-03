@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <?php wp_head(); ?>
   </head>
   <body <?php body_class(); ?>>
 
-    <!-- Header Area wrapper Starts -->
-    <header id="header-wrap">
-      <!-- Navbar Start -->
+  <!-- Header Area Start -->
+  <header id="header-wrap">
       <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
         <div class="container">
           <?php
@@ -20,7 +18,7 @@
             $logo = get_theme_mod('text_logo', 'Minimal');
           }
           ?>
-          <a href="index.html" class="navbar-brand"><?php echo $logo;?></a>       
+          <a href="<?php echo site_url(); ?>" class="navbar-brand"><?php echo $logo;?></a>       
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <i class="lni-menu"></i>
           </button>
@@ -34,5 +32,6 @@
             ?>
           </div>
         </div>
-      </nav>
-      <!-- Navbar End -->
+    </nav>
+  </header>
+  <!-- Header Area End -->
