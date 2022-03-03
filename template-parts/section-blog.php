@@ -41,7 +41,9 @@ $query = new WP_Query($args);
                     </div>
                 </div>
             </div>
-            <?php endwhile; ?>
+            <?php endwhile; 
+            wp_reset_postdata();
+            ?>
         </div>
     </div>
 </section>

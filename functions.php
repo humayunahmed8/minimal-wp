@@ -53,6 +53,24 @@ function minimal_excerpt_more($more){
 }
 add_action('excerpt_more', 'minimal_excerpt_more');
 
+// Register Theme Widget Sidebar 
+function minimal_widget_areas() {
+    register_sidebar(
+        array(
+            'name'          => esc_html__( 'Blog Sidebar', 'mydeals' ),
+            'id'            => 'blog-sidebar',
+            'description'   => esc_html__( 'Add widgets here.', 'mydeals' ),
+            'before_widget' => '<div id="%1$s" class="single-widget %2$s">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h4 class="widget-title">',
+            'after_title'   => '</h4>',
+        )
+    );
+}
+add_action('widgets_init', 'minimal_widget_areas');
+
+// Disables the block editor from managing widgets.
+add_filter( 'use_widgets_block_editor', '__return_false' );
 
 // Minimal Theme Script 
 function minimal_scripts() {
@@ -88,3 +106,81 @@ function minimal_scripts() {
 }
 add_action('wp_enqueue_scripts', 'minimal_scripts');
 
+
+
+// Popular Post Widget 
+class Popular_Posts extends WP_Widget {
+	function __construct() {
+		parent::__construct(
+			'popular-post', 
+			'Popular Post',
+			array( 'description' => __( 'Show popular post here' ), ) 
+		);
+		add_action( 'widgets_init', function() {
+			register_widget( 'Popular_Posts' );
+		});
+  	}
+  	
+  	public $arg = array(
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
+		'before_widget' => '<div class="widget-latest-post single-widget">',
+		'after_widget'  => '</div>'
+    );
+
+	public function widget( $arg, $instance ) {
+        echo $arg['before_widget'];
+		// Query post
+		$args = array(  
+			'post_type' => 'post',
+			'post_status' => 'publish',
+			'posts_per_page'   => $instance['count'],
+		);
+		$query = new WP_Query( $args );
+		if ( ! empty( $instance['title'] ) ) {
+            echo $arg['before_title'];
+            echo apply_filters( 'widget_title', $instance['title'] ); 
+			echo $arg['after_title'];
+        }
+		
+        echo '<div class="latest-post">';
+			while($query->have_posts()) { $query->the_post(); ?>
+				<div class="single-latest-post">
+                    <?php if( has_post_thumbnail() ) : ?>
+                    <div class="latest-post-img">
+                        <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
+                    </div>
+                    <?php else : ?>
+                    <div class="latest-post-img">
+                        <img src="<?php bloginfo('template_directory'); ?>/assets/img/blog-placeholder.png" alt="<?php the_title(); ?>" />
+                    </div>
+                    <?php endif; ?>
+                    <h5>
+                        <?php the_title('<a href="'.get_permalink().'">','</a>' ); ?>
+                    </h5>	
+                    <p><a href="<?php esc_url(get_permalink()); ?>" rel="bookmark"><?php echo esc_html(get_the_date()) ?></a></p>
+				</div>
+			<?php 
+			}
+        echo '</div>';
+        echo $arg['after_widget'];
+    }
+
+	 public function form( $instance ) {
+        $title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( '', 'minimal' );
+        $count = ! empty( $instance['count'] ) ? $instance['count'] : esc_html__( '', 'minimal' ); ?>
+        
+        <!-- Posts title label -->
+        <p> 
+          <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php echo esc_html__( 'Widget Title:', 'minimal' ); ?></label>
+          <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+        </p>
+        <!-- Posts count label -->
+        <p>
+          <label for="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>"><?php echo esc_html__( 'Posts Count:', 'minimal' ); ?></label>
+          <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'count' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'count' ) ); ?>" type="text" value="<?php echo esc_attr( $count ); ?>">
+        </p>
+        <?php
+    }
+}
+$popular_posts = new Popular_Posts();
