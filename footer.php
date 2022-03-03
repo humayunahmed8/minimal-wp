@@ -17,14 +17,15 @@
           </div>
           <div class="col-lg-4 col-md-4 col-xs-12">     
             <div class="social-icon text-center">
-              <a class="facebook" href="#"><i class="lni-facebook-filled"></i></a>
-              <a class="twitter" href="#"><i class="lni-twitter-filled"></i></a>
-              <a class="instagram" href="#"><i class="lni-instagram-filled"></i></a>
-              <a class="linkedin" href="#"><i class="lni-linkedin-filled"></i></a>
+              <?php $links = get_theme_mod('social_media_repeater');
+              foreach($links as $link) :
+              ?>
+                <a href="<?php echo $link['social_media_url']; ?>"><i class="<?php echo $link['social_media_icon']; ?>"></i></a>
+              <?php endforeach; ?>
             </div>
           </div>
           <div class="col-lg-4 col-md-5 col-xs-12">
-            <p class="float-right">Designed and Developed by <a href="http://uideck.com" rel="nofollow">UIdeck</a></p>
+            <p class="float-right"><?php echo get_theme_mod('footer_copyright'); ?></p>
           </div> 
         </div>
       </div>

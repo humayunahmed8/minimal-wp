@@ -1600,3 +1600,62 @@ Kirki::add_field( 'minimal_config', [
 		]
 	],
 ] );
+
+// ## Footer Section
+// ==========================
+Kirki::add_section( 'footer_section', array(
+    'title'          => esc_html__( 'Footer Section', 'minimal' ),
+    'description'    => esc_html__( 'Customize the footer section form here.', 'minimal' ),
+    'panel'          => 'stack_panel',
+) );
+// Social Media Repeater 
+Kirki::add_field( 'minimal_config', [
+	'type'        => 'repeater',
+	'label'       => esc_html__( 'Social Media Links', 'minimal' ),
+	'section'     => 'footer_section',
+	'row_label' => [
+		'type'  => 'field',
+		'value' => esc_html__( 'Social Link', 'minimal' ),
+		'field' => 'social_media_icon',
+	],
+	'button_label' => esc_html__('Add social link', 'minimal' ),
+	'settings'     => 'social_media_repeater',
+	'choices' => [
+		'limit' => 5
+	],
+	'priority' => 10,
+	'fields' => [
+		'social_media_icon'  => [
+			'type'    => 'select',
+			'label'   => esc_html__( 'Social Media Icon', 'minimal' ),
+			'default' => 'lni-twitter-filled',
+			'choices' => [
+				'lni-facebook-filled' => esc_html__( 'Facebook', 'minimal' ),
+				'lni-twitter-filled' => esc_html__( 'Twitter', 'minimal' ),
+				'lni-instagram-filled' => esc_html__( 'Instagram', 'minimal' ),
+				'lni-linkedin-filled' => esc_html__( 'Linkedin', 'minimal' ),
+			],
+		],
+		'social_media_url'  => [
+			'type'    => 'link',
+			'label'   => esc_html__( 'Social Media URL/Link', 'minimal' ),
+			'default' => esc_attr__('#', 'minimal'),
+		],
+	],
+] );
+// Footer Copyright
+Kirki::add_field( 'minimal_config', [
+	'type'     => 'textarea',
+	'settings' => 'footer_copyright',
+	'label'    => esc_html__( 'Footer Copyright Text', 'minimal' ),
+	'section'  => 'footer_section',
+	'default'  => esc_html__( 'Designed and Developed by Humayun Ahmed', 'minimal'),
+	'transport' => 'postMessage',
+	'priority' => 11,
+	'js_vars' 	=> [
+		[
+			'element' => '.copyright .float-right',
+			'function' => 'html',
+		]
+	],
+] );
