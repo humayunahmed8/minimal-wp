@@ -13,8 +13,14 @@
       <!-- Navbar Start -->
       <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
         <div class="container">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <a href="index.html" class="navbar-brand"><img src="<?php echo get_template_directory_uri();  ?>/assets/img/logo.png" alt=""></a>       
+          <?php
+          if(get_theme_mod('logo_type') == 'image_logo') {
+            $logo = '<img src="'.get_theme_mod('image_logo').'" style="max-width:'.get_theme_mod('logo_dimension').'" alt="">';
+          }else{
+            $logo = get_theme_mod('text_logo', 'Minimal');
+          }
+          ?>
+          <a href="index.html" class="navbar-brand"><?php echo $logo;?></a>       
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <i class="lni-menu"></i>
           </button>

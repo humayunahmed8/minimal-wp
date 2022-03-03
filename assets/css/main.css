@@ -494,6 +494,9 @@ hr {
 .navbar-brand {
   position: relative;
   padding: 0px;
+  color: var(--primary-color);
+  font-size: 28px;
+  font-weight: 700;
 }
 
 .top-nav-collapse {
@@ -1878,6 +1881,12 @@ textarea {
 /* Footer Area Start */
 .footer-area {
   background: #34363a;
+}
+
+.footer-logo {
+  color: var(--color-white);
+  font-size: 28px;
+  font-weight: 700;
 }
 
 .footer-area .footer-titel {

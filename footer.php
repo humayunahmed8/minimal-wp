@@ -4,8 +4,15 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-4 col-md-3 col-xs-12">
+            <?php
+              if(get_theme_mod('logo_type') == 'image_logo') {
+                $logo = '<img src="'.get_theme_mod('image_logo').'" style="max-width:'.get_theme_mod('logo_dimension').'" alt="">';
+              }else{
+                $logo = get_theme_mod('text_logo', 'Minimal');
+              }
+            ?>
             <div class="footer-logo">
-              <img src="<?php echo get_template_directory_uri();  ?>/assets/img/logo.png" alt="">
+              <?php echo $logo; ?>
             </div>
           </div>
           <div class="col-lg-4 col-md-4 col-xs-12">     

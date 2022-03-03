@@ -58,6 +58,69 @@ Kirki::add_field( 'minimal_config', [
 	],
 ] );
 
+// ## Logo Setting
+//==========================
+Kirki::add_section( 'minimal_logo_section', array(
+    'title'          => esc_html__( 'Logo Setting', 'minimal' ),
+    'description'    => esc_html__( 'Change the logo from here.', 'minimal' ),
+    'panel'          => 'stack_panel',
+) );
+// Logo Type
+Kirki::add_field( 'minimal_config', [
+	'type'     	=> 'select',
+	'settings' 	=> 'logo_type',
+	'label'    	=> esc_html__( 'Theme Logo Type', 'minimal' ),
+	'section'  	=> 'minimal_logo_section',
+	'default'	=> 'image_logo',
+	'choices' 	=> [
+		'text_logo' => 'Text Logo',
+		'image_logo' => 'Image Logo',
+	]
+] );
+// Logo Image
+Kirki::add_field( 'minimal_config', [
+	'type'     	=> 'image',
+	'settings' 	=> 'image_logo',
+	'label'    	=> esc_html__( 'Theme Logo', 'minimal' ),
+	'section'  	=> 'minimal_logo_section',
+	'default'	=> get_template_directory_uri() . '/assets/img/logo.png',
+	'active_callback' => [
+		[
+			'setting'  => 'logo_type',
+			'operator' => '==',
+			'value'    => 'image_logo',
+		]
+	],
+] );
+Kirki::add_field( 'minimal_config', [
+	'type'        => 'dimension',
+	'settings'    => 'logo_dimension',
+	'label'       => esc_html__( 'Logo Size', 'minimal' ),
+	'section'     => 'minimal_logo_section',
+	'default'     => '140px',
+	'active_callback' => [
+		[
+			'setting'  => 'logo_type',
+			'operator' => '==',
+			'value'    => 'image_logo',
+		]
+	],
+] );
+Kirki::add_field( 'minimal_config', [
+	'type'        => 'text',
+	'settings'    => 'text_logo',
+	'label'       => esc_html__( 'Text Logo', 'minimal' ),
+	'section'     => 'minimal_logo_section',
+	'default'     => esc_html__('Minimal', 'minimal'),
+	'active_callback' => [
+		[
+			'setting'  => 'logo_type',
+			'operator' => '==',
+			'value'    => 'text_logo',
+		]
+	],
+] );
+
 // ## Banner Section
 //==========================
 Kirki::add_section( 'banner_section', array(
@@ -1406,6 +1469,132 @@ Kirki::add_field( 'minimal_config', [
 	'active_callback' => [
 		[
 			'setting'  => 'client_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
+	],
+] );
+
+
+// ## Contact Section
+// ==========================
+Kirki::add_section( 'contact_section', array(
+    'title'          => esc_html__( 'Contact Section', 'minimal' ),
+    'description'    => esc_html__( 'Customize the contact section form here.', 'minimal' ),
+    'panel'          => 'stack_panel',
+) );
+// Contact Section Show and Hide 
+Kirki::add_field( 'minimal_config', [
+	'type'     => 'switch',
+	'settings' => 'contact_section_show_hide',
+	'label'    => esc_html__( 'Show/Hide Contact Section?', 'minimal' ),
+	'section'  => 'contact_section',
+	'default'  => 'show',
+	'choices' => [
+		'show'  => esc_html__( 'Show', 'minimal' ),
+		'hide' => esc_html__( 'Hide', 'minimal' ),
+	]
+] );
+// Contact Section Title
+Kirki::add_field( 'minimal_config', [
+	'type'     => 'text',
+	'settings' => 'contact_section_title',
+	'label'    => esc_html__( 'Contact Section Title', 'minimal' ),
+	'section'  => 'contact_section',
+	'default'  => esc_html__( 'We are a friendly bunch..' ),
+	// 'transport' => 'postMessage',
+	// 'js_vars' 	=> [
+	// 	[
+	// 		'element' => '#contact .contact-title h1',
+	// 		'function' => 'html',
+	// 	]
+	// ],
+	'active_callback' => [
+		[
+			'setting'  => 'contact_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
+	]
+] );
+// Contact Section Description
+Kirki::add_field( 'minimal_config', [
+	'type'     => 'textarea',
+	'settings' => 'contact_section_title_desc',
+	'label'    => esc_html__( 'Contact Title Description', 'minimal' ),
+	'section'  => 'contact_section',
+	'default'  => esc_html__( 'We create projects for companies and startups with a passion for quality', 'minimal' ),
+	// 'transport' => 'postMessage',
+	// 'js_vars' 	=> [
+	// 	[
+	// 		'element' => '#contact .contact-title p',
+	// 		'function' => 'html',
+	// 	]
+	// ],
+	'active_callback' => [
+		[
+			'setting'  => 'contact_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
+	]	
+] );
+// Contact List Title
+Kirki::add_field( 'minimal_config', [
+	'type'     => 'text',
+	'settings' => 'contact_list_title',
+	'label'    => esc_html__( 'Contact List Title', 'minimal' ),
+	'section'  => 'contact_section',
+	'default'  => esc_html__( 'Contact Us', 'minimal' ),
+	// 'transport' => 'postMessage',
+	// 'js_vars' 	=> [
+	// 	[
+	// 		'element' => '#contact .contact-right-area .contact-title',
+	// 		'function' => 'html',
+	// 	]
+	// ],
+	'active_callback' => [
+		[
+			'setting'  => 'contact_section_show_hide',
+			'operator' => '==',
+			'value'    => true,
+		]
+	]	
+] );
+// Contact Repeater 
+Kirki::add_field( 'minimal_config', [
+	'type'        => 'repeater',
+	'label'       => esc_html__( 'Contact List', 'minimal' ),
+	'section'     => 'contact_section',
+	'row_label' => [
+		'type'  => 'field',
+		'value' => esc_html__( 'Contact List', 'minimal' ),
+	],
+	'button_label' => esc_html__('Add contact info', 'minimal' ),
+	'settings'     => 'contact_item_repeater',
+	'choices' => [
+		'limit' => 4
+	],
+	'fields' => [
+		'contact_item_icon'  => [
+			'type'    => 'select',
+			'label'   => esc_html__( 'Contact item icon', 'minimal' ),
+			'default' => 'lni-phone-handset',
+			'choices' => [
+				'lni-map-marker' => esc_html__( 'Maps', 'minimal' ),
+				'lni-envelope' => esc_html__( 'Email', 'minimal' ),
+				'lni-phone-handset' => esc_html__( 'Phone', 'minimal' ),
+			],
+		],
+		'contact_item_title'  => [
+			'type'    => 'textarea',
+			'label'   => esc_html__( 'Contact item title', 'minimal' ),
+			'default' => esc_html__( 'Contact item title', 'minimal' ),
+		],
+	],
+	'active_callback' => [
+		[
+			'setting'  => 'contact_section_show_hide',
 			'operator' => '==',
 			'value'    => true,
 		]
