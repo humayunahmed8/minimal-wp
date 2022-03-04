@@ -22,7 +22,7 @@
                 $portfolio_preview = get_template_directory_uri() . '/assets/img/portfolio/img-2.jpg';
             } 
             ?>
-            <div class="col-lg-4 col-md-6 col-xs-12 mix development print">
+            <div class="col-lg-4 col-md-6 col-xs-12">
                 <div class="portfolio-item">
                     <div class="shot-item">
                         <img src="<?php echo $portfolio_thumbnail?>" alt="<?php echo $portfolio['portfolio_title']; ?>"/>  

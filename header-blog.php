@@ -7,7 +7,7 @@
 </head>
 <body <?php body_class(); ?>>
     <!-- Header Section Start -->
-    <header id="hero-area">
+    <header>
         <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
             <div class="container">
                 <a href="<?php echo site_url(); ?>" class="navbar-brand">

@@ -157,7 +157,7 @@ Kirki::add_field( 'minimal_config', [
 		'font-size'      => '30px',
 		'line-height'    => '48px',
 		'letter-spacing' => '0',
-		'color'          => '#585b60',
+		'color'          => '#fff',
 		'text-transform' => 'uppercase',
 		'text-align'     => 'center',
 	],
@@ -219,13 +219,27 @@ Kirki::add_field( 'minimal_config', [
 // 		]
 // 	],
 // ] );
-// Banner Image
+// Banner Section Background
 Kirki::add_field( 'minimal_config', [
-	'type'        => 'image',
-	'settings'    => 'banner_image',
-	'label'       => esc_html__( 'Banner Image', 'minimal' ),
-	'description' => esc_html__( 'Add Banner Image Here.', 'minimal' ),
+	'type'        => 'background',
+	'settings'    => 'banner_section_bg',
+	'label'       => esc_html__( 'Banner Section Background', 'minimal' ),
+	'description' => esc_html__( 'Add banner section background.', 'minimal' ),
 	'section'     => 'banner_section',
+	'default'     => [
+		'background-color'      => 'rgba(15,17,27,0.8)',
+		'background-image'      => get_template_directory_uri() . '/assets/img/banner.jpg',
+		'background-repeat'     => 'repeat',
+		'background-position'   => 'center center',
+		'background-size'       => 'cover',
+		'background-attachment' => 'scroll',
+	],
+	'transport'   => 'auto',
+	'output'      => [
+		[
+			'element' => '#hero-area',
+		],
+	]
 ] );
 
 

@@ -471,7 +471,7 @@ hr {
 }
 .navbar-expand-md .navbar-nav .nav-link {
   font-family: var(--primary-font), sans-serif;
-  color: var(--text-color);
+  color: var(--primary-color);
   font-weight: 600;
   padding: 8px 10px;
   line-height: 40px;
@@ -494,12 +494,16 @@ hr {
 .navbar-expand-md .navbar-nav .open>.nav-link {
   color: var(--primary-color) !important;
 }
+.navbar-expand-md .navbar-nav .active>.nav-link{
+  color: var(--color-white);
+}
 .navbar-expand-md .navbar-nav .nav-link:focus,
 .navbar-expand-md .navbar-nav .nav-link:hover {
   color: var(--primary-color) !important;
 }
 .navbar {
   padding: 0;
+  background-color: var(--color-white);
 }
 .navbar li.active a.nav-link {
   color: var(--primary-color);
@@ -601,10 +605,16 @@ hr {
   overflow: hidden;
   position: relative;
   background: url(../img/hero-bg.png);
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-#hero-area .contents {
+/* #hero-area .contents {
   padding: 170px 0px 50px;
-}
+} */
 #hero-area .contents .head-title {
   color: var(--text-color);
   text-transform: uppercase;
@@ -1079,6 +1089,8 @@ hr {
 }
 #blog .blog-item-img img {
   width: 100%;
+  height: 270px;
+  object-fit: cover;
 }
 #blog .blog-item-text {
   padding: 20px;
@@ -1354,6 +1366,7 @@ hr {
   display: inline-block;
   width: inherit;
   padding: 7px;
+  max-width: 86px;
 }
 .testimonial-item .content {
   overflow: hidden;
