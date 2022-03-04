@@ -13,9 +13,10 @@ require_once(get_theme_file_path('/inc/minimal-customizer.php'));
 
 // Minimal Theme Setup
 function minimal_setup() {
+    load_theme_textdomain('minimal', get_template_directory() . '/languages');
     add_theme_support( 'post-thumbnails' );
     add_theme_support( 'title-tag' );
-
+    add_theme_support( 'automatic-feed-links' );
     add_theme_support(
 		'html5',
 		array(
@@ -28,7 +29,6 @@ function minimal_setup() {
 			'script',
 		)
 	);
-
     register_nav_menus(array(
         'primary-menu' => __('Main Menu', 'minimal'),
     ));
