@@ -1,11 +1,15 @@
-<?php 
+<?php
+define( 'MINIMAL_CUSTOMIZER_CONFIG_ID', 'minimal_customizer_settings' );
+define( 'MINIMAL_CUSTOMIZER_PANEL_ID', 'minimal_customizer_panel' );
+
+if ( class_exists( 'Kirki' ) ) {
 // Kirki Config
-Kirki::add_config( 'minimal_config', array(
+Kirki::add_config( MINIMAL_CUSTOMIZER_CONFIG_ID, array(
 	'capability'    => 'edit_theme_options',
 	'option_type'   => 'theme_mod',
 ) );
 // Theme Settings Panel
-Kirki::add_panel( 'stack_panel', array(
+Kirki::add_panel( MINIMAL_CUSTOMIZER_PANEL_ID, array(
     'priority'    => 10,
     'title'       => esc_html__( 'Minimal Theme Settings', 'minimal' ),
     'description' => esc_html__( 'Customize minimal theme', 'minimal' ),
@@ -16,11 +20,11 @@ Kirki::add_panel( 'stack_panel', array(
 Kirki::add_section( 'minimal_color_set_section', array(
     'title'          => esc_html__( 'Color Setting', 'minimal' ),
     'description'    => esc_html__( 'Change the theme default color from here.', 'minimal' ),
-    'panel'          => 'stack_panel',
+    'panel'          => MINIMAL_CUSTOMIZER_PANEL_ID,
 ) );
 
 // Banner Button Background Color 
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'color', // color,color-palette 
 	'settings' => 'minimal_color_setting',
 	'label'    => esc_html__( 'Theme Primary Color', 'minimal' ),
@@ -39,7 +43,7 @@ Kirki::add_field( 'minimal_config', [
 ] );
 
 // Section Overlay
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'        => 'color',
 	'settings'    => 'section_overlay',
 	'label'       => esc_html__( 'Section Overlay', 'minimal' ),
@@ -63,10 +67,10 @@ Kirki::add_field( 'minimal_config', [
 Kirki::add_section( 'minimal_logo_section', array(
     'title'          => esc_html__( 'Logo Setting', 'minimal' ),
     'description'    => esc_html__( 'Change the logo from here.', 'minimal' ),
-    'panel'          => 'stack_panel',
+    'panel'          => MINIMAL_CUSTOMIZER_PANEL_ID,
 ) );
 // Logo Type
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     	=> 'select',
 	'settings' 	=> 'logo_type',
 	'label'    	=> esc_html__( 'Theme Logo Type', 'minimal' ),
@@ -78,7 +82,7 @@ Kirki::add_field( 'minimal_config', [
 	]
 ] );
 // Logo Image
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     	=> 'image',
 	'settings' 	=> 'image_logo',
 	'label'    	=> esc_html__( 'Theme Logo', 'minimal' ),
@@ -92,7 +96,7 @@ Kirki::add_field( 'minimal_config', [
 		]
 	],
 ] );
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'        => 'dimension',
 	'settings'    => 'logo_dimension',
 	'label'       => esc_html__( 'Logo Size', 'minimal' ),
@@ -106,7 +110,7 @@ Kirki::add_field( 'minimal_config', [
 		]
 	],
 ] );
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'        => 'text',
 	'settings'    => 'text_logo',
 	'label'       => esc_html__( 'Text Logo', 'minimal' ),
@@ -126,11 +130,11 @@ Kirki::add_field( 'minimal_config', [
 Kirki::add_section( 'banner_section', array(
     'title'          => esc_html__( 'Banner Section', 'minimal' ),
     'description'    => esc_html__( 'Customize the banner section from here.', 'minimal' ),
-    'panel'          => 'stack_panel',
+    'panel'          => MINIMAL_CUSTOMIZER_PANEL_ID,
     'priority'       => 160,
 ) );
 // Banner Heading 
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     	=> 'text',
 	'settings' 	=> 'banner_heading',
 	'label'    	=> esc_html__( 'Banner Heading', 'minimal' ),
@@ -146,7 +150,7 @@ Kirki::add_field( 'minimal_config', [
 	]
 ] );
 // Banner Heading Typography
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'        => 'typography',
 	'settings'    => 'banner_heading_tpg',
 	'label'       => esc_html__( 'Banner Heading Typography', 'minimal' ),
@@ -170,7 +174,7 @@ Kirki::add_field( 'minimal_config', [
 	],
 ] );
 // Banner Button Text
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'text',
 	'settings' => 'banner_button_label',
 	'label'    => esc_html__( 'Banner Button Label', 'minimal' ),
@@ -186,7 +190,7 @@ Kirki::add_field( 'minimal_config', [
 	]
 ] );
 // Banner Button URL/Link 
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'link',
 	'settings' => 'banner_button_url',
 	'label'    => esc_html__( 'Banner Button URL', 'minimal' ),
@@ -196,7 +200,7 @@ Kirki::add_field( 'minimal_config', [
 	'transport' => 'postMessage',
 ] );
 // Banner Button Background Color 
-// Kirki::add_field( 'minimal_config', [
+// Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 // 	'type'     => 'color', // color,color-palette 
 // 	'settings' => 'banner_button_color',
 // 	'label'    => esc_html__( 'Banner Button Color', 'minimal' ),
@@ -220,7 +224,7 @@ Kirki::add_field( 'minimal_config', [
 // 	],
 // ] );
 // Banner Section Background
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'        => 'background',
 	'settings'    => 'banner_section_bg',
 	'label'       => esc_html__( 'Banner Section Background', 'minimal' ),
@@ -248,11 +252,11 @@ Kirki::add_field( 'minimal_config', [
 Kirki::add_section( 'feature_section', array(
     'title'          => esc_html__( 'Feature Section', 'minimal' ),
     'description'    => esc_html__( 'Customize the feature section form here.', 'minimal' ),
-    'panel'          => 'stack_panel',
+    'panel'          => MINIMAL_CUSTOMIZER_PANEL_ID,
     'priority'       => 160,
 ) );
 // Feature Content Heading 
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     	=> 'text',
 	'settings' 	=> 'feature_content_heading',
 	'label'    	=> esc_html__( 'Feature Section Heading', 'minimal' ),
@@ -267,7 +271,7 @@ Kirki::add_field( 'minimal_config', [
 	]
 ] );
 // Feature Content Heading Typography
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'        => 'typography',
 	'settings'    => 'feature_content_heading_tpg',
 	'label'       => esc_html__( 'Feature Section Heading Typography', 'minimal' ),
@@ -290,7 +294,7 @@ Kirki::add_field( 'minimal_config', [
 	],
 ] );
 // Feature Content Heading Description
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     	=> 'textarea',
 	'settings' 	=> 'feature_content_heading_desc',
 	'label'    	=> esc_html__( 'Feature Section Heading Description', 'minimal' ),
@@ -305,7 +309,7 @@ Kirki::add_field( 'minimal_config', [
 	]
 ] );
 // Feature Content Button Label
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'text',
 	'settings' => 'feature_content_btn_label',
 	'label'    => esc_html__( 'Feature Content Button Label', 'minimal' ),
@@ -320,7 +324,7 @@ Kirki::add_field( 'minimal_config', [
 	]
 ] );
 // Feature Content Button URL/Link
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'link',
 	'settings' => 'feature_content_btn_url',
 	'label'    => esc_html__( 'Feature Content Button URL', 'minimal' ),
@@ -328,7 +332,7 @@ Kirki::add_field( 'minimal_config', [
 	'default'  => esc_attr__( '#', 'minimal' ),
 ] );
 // Feature Content Button Background Color
-// Kirki::add_field( 'minimal_config', [
+// Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 // 	'type'     => 'color', 
 // 	'settings' => 'feature_content_btn_color',
 // 	'label'    => esc_html__( 'Feature Content Button Color', 'minimal' ),
@@ -346,7 +350,7 @@ Kirki::add_field( 'minimal_config', [
 // 	],
 // ] );
 // Feature List Repeater 
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'        => 'repeater',
 	'label'       => esc_html__( 'Feature List', 'minimal' ),
 	'section'     => 'feature_section',
@@ -401,10 +405,10 @@ Kirki::add_field( 'minimal_config', [
 Kirki::add_section( 'service_section', array(
     'title'          => esc_html__( 'Service Section', 'minimal' ),
     'description'    => esc_html__( 'Customize the service section form here.', 'minimal' ),
-    'panel'          => 'stack_panel',
+    'panel'          => MINIMAL_CUSTOMIZER_PANEL_ID,
 ) );
 // Service Section Show and Hide 
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'checkbox',
 	'settings' => 'service_section_show_hide',
 	'label'    => esc_html__( 'Show/Hide Service Section?', 'minimal' ),
@@ -412,7 +416,7 @@ Kirki::add_field( 'minimal_config', [
 	'default'  => true,
 ] );
 // Service Section Title
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'text',
 	'settings' => 'service_section_title',
 	'label'    => esc_html__( 'Service Section Title', 'minimal' ),
@@ -434,7 +438,7 @@ Kirki::add_field( 'minimal_config', [
 	]
 ] );
 // Service Section Description
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'textarea',
 	'settings' => 'service_section_desc',
 	'label'    => esc_html__( 'Service Section Description', 'minimal' ),
@@ -456,7 +460,7 @@ Kirki::add_field( 'minimal_config', [
 	]
 ] );
 // Service Item Repeater 
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'        => 'repeater',
 	'label'       => esc_html__( 'Service Items', 'minimal' ),
 	'section'     => 'service_section',
@@ -512,7 +516,7 @@ Kirki::add_field( 'minimal_config', [
 	]
 ] );
 // Service Column Select 
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'        => 'select',
 	'settings'    => 'service_item_column',
 	'label'       => esc_html__( 'Service Item Column', 'minimal' ),
@@ -538,7 +542,7 @@ Kirki::add_field( 'minimal_config', [
 	]
 ] );
 // Service Item Alignment
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'        => 'radio-buttonset',
 	'settings'    => 'service_item_alignment',
 	'label'       => esc_html__( 'Service Item Alignment', 'minimal' ),
@@ -569,10 +573,10 @@ Kirki::add_field( 'minimal_config', [
 Kirki::add_section( 'video_section', array(
     'title'          => esc_html__( 'Video Section', 'minimal' ),
     'description'    => esc_html__( 'Customize the video section form here.', 'minimal' ),
-    'panel'          => 'stack_panel',
+    'panel'          => MINIMAL_CUSTOMIZER_PANEL_ID,
 ) );
 // Video Section Show and Hide 
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'checkbox',
 	'settings' => 'video_section_show_hide',
 	'label'    => esc_html__( 'Show/Hide Video Section?', 'minimal' ),
@@ -580,7 +584,7 @@ Kirki::add_field( 'minimal_config', [
 	'default'  => true,
 ] );
 // Video Title
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'text',
 	'settings' => 'video_title',
 	'label'    => esc_html__( 'Video Title', 'minimal' ),
@@ -602,7 +606,7 @@ Kirki::add_field( 'minimal_config', [
 	]
 ] );
 // Video Link/URL
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'link',
 	'settings' => 'video_link',
 	'label'    => esc_html__( 'Video Link/URL', 'minimal' ),
@@ -618,7 +622,7 @@ Kirki::add_field( 'minimal_config', [
 	]
 ] );
 // Video Section Background
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'        => 'background',
 	'settings'    => 'video_section_bg',
 	'label'       => esc_html__( 'Video Section Background', 'minimal' ),
@@ -651,10 +655,10 @@ Kirki::add_field( 'minimal_config', [
 Kirki::add_section( 'team_section', array(
     'title'          => esc_html__( 'Team Section', 'minimal' ),
     'description'    => esc_html__( 'Customize the team section form here.', 'minimal' ),
-    'panel'          => 'stack_panel',
+    'panel'          => MINIMAL_CUSTOMIZER_PANEL_ID,
 ) );
 // Team Section Show and Hide 
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'checkbox',
 	'settings' => 'team_section_show_hide',
 	'label'    => esc_html__( 'Show/Hide Team Section?', 'minimal' ),
@@ -662,7 +666,7 @@ Kirki::add_field( 'minimal_config', [
 	'default'  => true,
 ] );
 // Team Section Title
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'text',
 	'settings' => 'team_section_title',
 	'label'    => esc_html__( 'Team Section Title', 'minimal' ),
@@ -684,7 +688,7 @@ Kirki::add_field( 'minimal_config', [
 	]
 ] );
 // Team Section Description
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'textarea',
 	'settings' => 'team_section_desc',
 	'label'    => esc_html__( 'Team Section Description', 'minimal' ),
@@ -706,7 +710,7 @@ Kirki::add_field( 'minimal_config', [
 	]	
 ] );
 // Team Member Repeater 
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'        => 'repeater',
 	'label'       => esc_html__( 'Team Members', 'minimal' ),
 	'section'     => 'team_section',
@@ -771,10 +775,10 @@ Kirki::add_field( 'minimal_config', [
 Kirki::add_section( 'counter_up_section', array(
     'title'          => esc_html__( 'Counter Up Section', 'minimal' ),
     'description'    => esc_html__( 'Customize the counter up section form here.', 'minimal' ),
-    'panel'          => 'stack_panel',
+    'panel'          => MINIMAL_CUSTOMIZER_PANEL_ID,
 ) );
 // Couter Up Section Show and Hide 
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'checkbox',
 	'settings' => 'counter_up_section_show_hide',
 	'label'    => esc_html__( 'Show/Hide Counter Up Section?', 'minimal' ),
@@ -782,7 +786,7 @@ Kirki::add_field( 'minimal_config', [
 	'default'  => true,
 ] );
 // Counter Up Section Background
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'        => 'background',
 	'settings'    => 'counter_up_section_bg',
 	'label'       => esc_html__( 'Counter Up Section Background', 'minimal' ),
@@ -812,7 +816,7 @@ Kirki::add_field( 'minimal_config', [
 ] );
 
 // Counter Up Repeater 
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'        => 'repeater',
 	'label'       => esc_html__( 'Counter Up Item', 'minimal' ),
 	'section'     => 'counter_up_section',
@@ -863,10 +867,10 @@ Kirki::add_field( 'minimal_config', [
 Kirki::add_section( 'pricing_section', array(
     'title'          => esc_html__( 'Pricing Section', 'minimal' ),
     'description'    => esc_html__( 'Customize the pricing section form here.', 'minimal' ),
-    'panel'          => 'stack_panel',
+    'panel'          => MINIMAL_CUSTOMIZER_PANEL_ID,
 ) );
 // Pricing Section Show and Hide 
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'checkbox',
 	'settings' => 'pricing_section_show_hide',
 	'label'    => esc_html__( 'Show/Hide Pricing Section?', 'minimal' ),
@@ -874,7 +878,7 @@ Kirki::add_field( 'minimal_config', [
 	'default'  => true,
 ] );
 // Pricing Section Title
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'text',
 	'settings' => 'pricing_section_title',
 	'label'    => esc_html__( 'Pricing Section Title', 'minimal' ),
@@ -896,7 +900,7 @@ Kirki::add_field( 'minimal_config', [
 	]
 ] );
 // Pricing Section Description
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'textarea',
 	'settings' => 'pricing_section_desc',
 	'label'    => esc_html__( 'Pricing Section Description', 'minimal' ),
@@ -918,7 +922,7 @@ Kirki::add_field( 'minimal_config', [
 	]	
 ] );
 // Pricing Repeater 
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'        => 'repeater',
 	'label'       => esc_html__( 'Pricing Item', 'minimal' ),
 	'section'     => 'pricing_section',
@@ -1027,10 +1031,10 @@ Kirki::add_field( 'minimal_config', [
 Kirki::add_section( 'skills_section', array(
     'title'          => esc_html__( 'Skills Section', 'minimal' ),
     'description'    => esc_html__( 'Customize the skills section form here.', 'minimal' ),
-    'panel'          => 'stack_panel',
+    'panel'          => MINIMAL_CUSTOMIZER_PANEL_ID,
 ) );
 // Skills Section Show and Hide 
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'checkbox',
 	'settings' => 'skills_section_show_hide',
 	'label'    => esc_html__( 'Show/Hide Skills Section?', 'minimal' ),
@@ -1038,7 +1042,7 @@ Kirki::add_field( 'minimal_config', [
 	'default'  => true,
 ] );
 // Skills Image
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'        => 'image',
 	'settings'    => 'skills_image',
 	'label'       => esc_html__( 'Skills Image', 'minimal' ),
@@ -1053,7 +1057,7 @@ Kirki::add_field( 'minimal_config', [
 	]
 ] );
 // Skills Title
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'text',
 	'settings' => 'skills_content_title',
 	'label'    => esc_html__( 'Skills Content Title', 'minimal' ),
@@ -1075,7 +1079,7 @@ Kirki::add_field( 'minimal_config', [
 	]
 ] );
 // Skills Content Description
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'textarea',
 	'settings' => 'skills_content_desc',
 	'label'    => esc_html__( 'Skills Content Description', 'minimal' ),
@@ -1097,7 +1101,7 @@ Kirki::add_field( 'minimal_config', [
 	]	
 ] );
 // Skills Bar Repeater 
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'        => 'repeater',
 	'label'       => esc_html__( 'Skills Progress Bar', 'minimal' ),
 	'section'     => 'skills_section',
@@ -1139,10 +1143,10 @@ Kirki::add_field( 'minimal_config', [
 Kirki::add_section( 'portfolio_section', array(
     'title'          => esc_html__( 'Portfolio Section', 'minimal' ),
     'description'    => esc_html__( 'Customize the skills section form here.', 'minimal' ),
-    'panel'          => 'stack_panel',
+    'panel'          => MINIMAL_CUSTOMIZER_PANEL_ID,
 ) );
 // Portfolio Section Show and Hide 
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'switch',
 	'settings' => 'portfolio_section_show_hide',
 	'label'    => esc_html__( 'Show/Hide Portfolio Section?', 'minimal' ),
@@ -1154,7 +1158,7 @@ Kirki::add_field( 'minimal_config', [
 	]
 ] );
 // Portfolio Section Title
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'text',
 	'settings' => 'portfolio_section_title',
 	'label'    => esc_html__( 'Portfolio Section Title', 'minimal' ),
@@ -1176,7 +1180,7 @@ Kirki::add_field( 'minimal_config', [
 	]
 ] );
 // Portfolio Section Description
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'textarea',
 	'settings' => 'portfolio_section_desc',
 	'label'    => esc_html__( 'Portfolio Title Description', 'minimal' ),
@@ -1198,7 +1202,7 @@ Kirki::add_field( 'minimal_config', [
 	]	
 ] );
 // Portfolio Repeater 
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'        => 'repeater',
 	'label'       => esc_html__( 'Your Portfolios', 'minimal' ),
 	'section'     => 'portfolio_section',
@@ -1242,10 +1246,10 @@ Kirki::add_field( 'minimal_config', [
 Kirki::add_section( 'testimonial_section', array(
     'title'          => esc_html__( 'Testimonial Section', 'minimal' ),
     'description'    => esc_html__( 'Customize the testimonial section form here.', 'minimal' ),
-    'panel'          => 'stack_panel',
+    'panel'          => MINIMAL_CUSTOMIZER_PANEL_ID,
 ) );
 // Testimonial Section Show and Hide 
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'switch',
 	'settings' => 'testimonial_section_show_hide',
 	'label'    => esc_html__( 'Show/Hide Testimonial Section?', 'minimal' ),
@@ -1257,7 +1261,7 @@ Kirki::add_field( 'minimal_config', [
 	]
 ] );
 // Testimonial Section Background 
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'        => 'background',
 	'settings'    => 'testimonial_section_bg',
 	'label'       => esc_html__( 'Testimonial Section Background', 'minimal' ),
@@ -1286,7 +1290,7 @@ Kirki::add_field( 'minimal_config', [
 	]
 ] );
 // Testimonial Repeater 
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'        => 'repeater',
 	'label'       => esc_html__( 'Testimonials', 'minimal' ),
 	'section'     => 'testimonial_section',
@@ -1336,10 +1340,10 @@ Kirki::add_field( 'minimal_config', [
 Kirki::add_section( 'blog_section', array(
     'title'          => esc_html__( 'Blog Section', 'minimal' ),
     'description'    => esc_html__( 'Customize the blog section form here.', 'minimal' ),
-    'panel'          => 'stack_panel',
+    'panel'          => MINIMAL_CUSTOMIZER_PANEL_ID,
 ) );
 // Blog Section Show and Hide 
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'switch',
 	'settings' => 'blog_section_show_hide',
 	'label'    => esc_html__( 'Show/Hide Blog Section?', 'minimal' ),
@@ -1351,7 +1355,7 @@ Kirki::add_field( 'minimal_config', [
 	]
 ] );
 // Blog Section Title
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'text',
 	'settings' => 'blog_section_title',
 	'label'    => esc_html__( 'Blog Section Title', 'minimal' ),
@@ -1373,7 +1377,7 @@ Kirki::add_field( 'minimal_config', [
 	]
 ] );
 // Blog Section Description
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'textarea',
 	'settings' => 'blog_section_title_desc',
 	'label'    => esc_html__( 'Blog Title Description', 'minimal' ),
@@ -1401,10 +1405,10 @@ Kirki::add_field( 'minimal_config', [
 Kirki::add_section( 'client_section', array(
     'title'          => esc_html__( 'Client Section', 'minimal' ),
     'description'    => esc_html__( 'Customize the client section form here.', 'minimal' ),
-    'panel'          => 'stack_panel',
+    'panel'          => MINIMAL_CUSTOMIZER_PANEL_ID,
 ) );
 // Client Section Show and Hide 
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'switch',
 	'settings' => 'client_section_show_hide',
 	'label'    => esc_html__( 'Show/Hide Client Section?', 'minimal' ),
@@ -1416,7 +1420,7 @@ Kirki::add_field( 'minimal_config', [
 	]
 ] );
 // Client Section Title
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'text',
 	'settings' => 'client_section_title',
 	'label'    => esc_html__( 'Client Section Title', 'minimal' ),
@@ -1438,7 +1442,7 @@ Kirki::add_field( 'minimal_config', [
 	]
 ] );
 // Client Section Description
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'textarea',
 	'settings' => 'client_section_title_desc',
 	'label'    => esc_html__( 'Client Title Description', 'minimal' ),
@@ -1460,7 +1464,7 @@ Kirki::add_field( 'minimal_config', [
 	]	
 ] );
 // Clients Repeater 
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'        => 'repeater',
 	'label'       => esc_html__( 'Our clients', 'minimal' ),
 	'section'     => 'client_section',
@@ -1495,10 +1499,10 @@ Kirki::add_field( 'minimal_config', [
 Kirki::add_section( 'contact_section', array(
     'title'          => esc_html__( 'Contact Section', 'minimal' ),
     'description'    => esc_html__( 'Customize the contact section form here.', 'minimal' ),
-    'panel'          => 'stack_panel',
+    'panel'          => MINIMAL_CUSTOMIZER_PANEL_ID,
 ) );
 // Contact Section Show and Hide 
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'switch',
 	'settings' => 'contact_section_show_hide',
 	'label'    => esc_html__( 'Show/Hide Contact Section?', 'minimal' ),
@@ -1510,7 +1514,7 @@ Kirki::add_field( 'minimal_config', [
 	]
 ] );
 // Contact Section Title
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'text',
 	'settings' => 'contact_section_title',
 	'label'    => esc_html__( 'Contact Section Title', 'minimal' ),
@@ -1532,7 +1536,7 @@ Kirki::add_field( 'minimal_config', [
 	]
 ] );
 // Contact Section Description
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'textarea',
 	'settings' => 'contact_section_title_desc',
 	'label'    => esc_html__( 'Contact Title Description', 'minimal' ),
@@ -1554,7 +1558,7 @@ Kirki::add_field( 'minimal_config', [
 	]	
 ] );
 // Contact List Title
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'text',
 	'settings' => 'contact_list_title',
 	'label'    => esc_html__( 'Contact List Title', 'minimal' ),
@@ -1576,7 +1580,7 @@ Kirki::add_field( 'minimal_config', [
 	]	
 ] );
 // Contact Repeater 
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'        => 'repeater',
 	'label'       => esc_html__( 'Contact List', 'minimal' ),
 	'section'     => 'contact_section',
@@ -1620,10 +1624,10 @@ Kirki::add_field( 'minimal_config', [
 Kirki::add_section( 'footer_section', array(
     'title'          => esc_html__( 'Footer Section', 'minimal' ),
     'description'    => esc_html__( 'Customize the footer section form here.', 'minimal' ),
-    'panel'          => 'stack_panel',
+    'panel'          => MINIMAL_CUSTOMIZER_PANEL_ID,
 ) );
 // Social Media Repeater 
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'        => 'repeater',
 	'label'       => esc_html__( 'Social Media Links', 'minimal' ),
 	'section'     => 'footer_section',
@@ -1658,7 +1662,7 @@ Kirki::add_field( 'minimal_config', [
 	],
 ] );
 // Footer Copyright
-Kirki::add_field( 'minimal_config', [
+Kirki::add_field( MINIMAL_CUSTOMIZER_CONFIG_ID, [
 	'type'     => 'textarea',
 	'settings' => 'footer_copyright',
 	'label'    => esc_html__( 'Footer Copyright Text', 'minimal' ),
@@ -1673,3 +1677,4 @@ Kirki::add_field( 'minimal_config', [
 		]
 	],
 ] );
+}

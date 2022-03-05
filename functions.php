@@ -6,10 +6,13 @@
 // add_filter( 'kirki/config', 'minimal_kirki_configuration' );
 
 // Import Kirki Plugin File
-include_once( dirname( __FILE__ ) . '/inc/kirki/kirki.php' );
+// include_once( dirname( __FILE__ ) . '/inc/kirki/kirki.php' );
 
 // Kirki Customizer
-require_once(get_theme_file_path('/inc/minimal-customizer.php'));
+// require_once get_template_directory() . '/inc/include-kirki.php';
+require_once("inc/class-kirki-installer-section.php");
+require_once("inc/minimal-customizer.php");
+// require_once(get_theme_file_path('/inc/minimal-customizer.php'));
 
 // Minimal Theme Setup
 function minimal_setup() {
